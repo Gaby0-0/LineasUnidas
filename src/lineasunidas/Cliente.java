@@ -10,29 +10,34 @@ package lineasunidas;
  */
 // hereda de Usuario
 public class Cliente extends Usuario {
+
     private int idCliente;
     private String metodoCompra;
 
-    public Cliente(String metodoCompra) {
+    public Cliente(int idCliente, String nombre, String apellidoP, String apellidoM, String telefono, String metodoCompra) {
+        super(idCliente, nombre, apellidoP, apellidoM, telefono);
+        this.idCliente = idCliente;
         this.metodoCompra = metodoCompra;
     }
 
-    public int getIdCliente() { 
-        return idCliente; 
-    }
-    public void setIdCliente(int idCliente) { 
-        this.idCliente = idCliente; 
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public String getMetodoCompra() { 
-        return metodoCompra; 
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
+
+    public String getMetodoCompra() {
+        return metodoCompra;
+    }
+
     public void setMetodoCompra(String metodoCompra) {
-        this.metodoCompra = metodoCompra; 
+        this.metodoCompra = metodoCompra;
     }
 
     public String comprarBoleto(Boleto boleto) {
-        
+
         return "Compra de boleto";
     }
 
@@ -43,11 +48,11 @@ public class Cliente extends Usuario {
 
     @Override
     public void registrar() {
-        
+
     }
 
     @Override
     public void consultarHistorial() {
-        
+
     }
 }

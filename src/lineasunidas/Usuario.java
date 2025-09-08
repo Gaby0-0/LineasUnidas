@@ -15,6 +15,13 @@ public abstract class Usuario {
     protected String apellidoM;
     protected String telefono;
     
+    public Usuario(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidoP = apellidoP;
+        this.apellidoM = apellidoM;
+        this.telefono = telefono;
+    }
     public abstract void registrar();
     public abstract void consultarHistorial();
     
