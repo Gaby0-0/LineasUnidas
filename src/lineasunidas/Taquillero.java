@@ -10,32 +10,23 @@ package lineasunidas;
  */
 //hereda de Usuario
 public class Taquillero extends Usuario {
-    private int idEmpleado;
-    private String cargo;
+    private int idTaquillero;
     private HorarioTrabajo horario;
 
-    public Taquillero(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono,
-                      int idEmpleado, String cargo, HorarioTrabajo horario) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono);
-        this.idEmpleado = idEmpleado;
-        this.cargo = cargo;
+    public Taquillero(int idTaquillero, String nombre, String apellidoP, String apellidoM, String telefono, HorarioTrabajo horario) {
+        super(idTaquillero, nombre, apellidoP, apellidoM, telefono);
+        this.idTaquillero = idTaquillero;
         this.horario = horario;
     }
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setIdTaquillero(int idTaquillero) {
+        this.idTaquillero = idTaquillero;
     }
 
-    public int getIdEmpleado() {
-        return idEmpleado;
+    public int getIdTaquillero() {
+        return idTaquillero;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
+   
 
     public void setHorario(HorarioTrabajo horario) {
         this.horario = horario;
@@ -52,6 +43,6 @@ public class Taquillero extends Usuario {
 
     @Override
     public void consultarHistorial() {
-        System.out.println("Historial del taquillero: " + idEmpleado);
+        System.out.println("Historial del taquillero: " + idTaquillero);
     }
 }

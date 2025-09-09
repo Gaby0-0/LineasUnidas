@@ -10,13 +10,13 @@ package lineasunidas;
  */
 public class Urvan {
     private int idUrban;
-    private String placa;
+    private String matricula;
     private int capacidad;
     private Conductor conductor;
 
-    public Urvan(int idUrban, String placa, int capacidad, Conductor conductor) {
+    public Urvan(int idUrban, String matricula, int capacidad, Conductor conductor) {
         this.idUrban = idUrban;
-        this.placa = placa;
+        this.matricula = matricula;
         this.capacidad = capacidad;
         this.conductor=conductor;
     }
@@ -29,12 +29,12 @@ public class Urvan {
         this.idUrban = idUrban;
     }
 
-    public String getPlaca() {
-        return placa;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public int getCapacidad() {
