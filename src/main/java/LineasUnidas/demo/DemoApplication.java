@@ -11,12 +11,13 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
           ApplicationContext context = SpringApplication.run(DemoApplication.class);
-        HorarioTrabajoService servicio = context.getBean(HorarioTrabajoService.class);
+       
+          /*HorarioTrabajoService servicio = context.getBean(HorarioTrabajoService.class);
          servicio.crearHorario(
         List.of("Lunes", "Martes","Miércoles"), 
            List.of("11:00-18:00")
                );
 
-        System.out.println("Horario insertado!");
+        System.out.println("Horario insertado!");*/
         }
 }
