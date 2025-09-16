@@ -19,7 +19,6 @@ public class Taquillero extends Usuario {
     @Column(name = "id_empleado", nullable = false, unique = true)
     private int idEmpleado;
 
-    private String cargo;
 
     @ManyToOne
     @JoinColumn(name = "id_horario", nullable = false)
@@ -36,18 +35,15 @@ public class Taquillero extends Usuario {
     public Taquillero() {}
 
     public Taquillero(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono,
-                      int idEmpleado, String cargo, HorarioTrabajo horario) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono);
-        this.idEmpleado = idEmpleado;
-        this.cargo = cargo;
+                      String correo, String cargo, HorarioTrabajo horario) {
+        super(idUsuario, nombre, apellidoP, apellidoM, telefono, correo, "Taquillero");
+        this.idEmpleado = idUsuario;
         this.horario = horario;
     }
 
     public int getIdEmpleado() { return idEmpleado; }
     public void setIdEmpleado(int idEmpleado) { this.idEmpleado = idEmpleado; }
 
-    public String getCargo() { return cargo; }
-    public void setCargo(String cargo) { this.cargo = cargo; }
 
     public HorarioTrabajo getHorario() { return horario; }
     public void setHorario(HorarioTrabajo horario) { this.horario = horario; }

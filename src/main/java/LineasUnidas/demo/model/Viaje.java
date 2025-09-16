@@ -24,6 +24,7 @@ public class Viaje {
 
     private float precio;
     private String disponibilidad;
+    private String estado;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_horario")
@@ -50,7 +51,7 @@ public class Viaje {
 
     public Viaje() {}
 
-    public Viaje(int idViaje, float precio, String disponibilidad, HorarioViaje horario) {
+    public Viaje(int idViaje, float precio, String disponibilidad,String estado, HorarioViaje horario) {
         this.idViaje = idViaje;
         this.precio = precio;
         this.disponibilidad = disponibilidad;
@@ -66,6 +67,9 @@ public class Viaje {
     public String getDisponibilidad() { return disponibilidad; }
     public void setDisponibilidad(String disponibilidad) { this.disponibilidad = disponibilidad; }
 
+    public String getEstado(){return estado;}
+    public void setEstado(String estado){this.estado=estado;}
+    
     public HorarioViaje getHorario() { return horario; }
     public void setHorario(HorarioViaje horario) { this.horario = horario; }
 

@@ -16,6 +16,9 @@ import java.util.List;
 @Table(name = "cliente")
 public class Cliente extends Usuario {
 
+    @Column(name = "id_cliente", nullable = false, unique = true)
+    private int idCliente;
+
     @Column(name = "metodo_compra")
     private String metodoCompra;
 
@@ -26,9 +29,18 @@ public class Cliente extends Usuario {
         super();
     }
 
-    public Cliente(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono, String metodoCompra) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono);
+    public Cliente(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono, String correo, String metodoCompra) {
+        super(idUsuario, nombre, apellidoP, apellidoM, telefono, correo, "Cliente");
+        this.idCliente = idUsuario;
         this.metodoCompra = metodoCompra;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getMetodoCompra() {
@@ -49,13 +61,13 @@ public class Cliente extends Usuario {
 
     public String comprarBoleto(Boleto boleto) {
         boletos.add(boleto);
-        boleto.setCliente(this); 
+        boleto.setCliente(this);
         return "Compra de boleto realizada";
     }
 
     public String cancelarBoleto(Boleto boleto) {
         boletos.remove(boleto);
-        boleto.setCliente(null); 
+        boleto.setCliente(null);
         return "Cancelación de boleto realizada";
     }
 

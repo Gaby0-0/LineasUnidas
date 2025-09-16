@@ -13,6 +13,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "conductor")
 public class Conductor extends Usuario {
+    @Column(name = "id_conductor", nullable = false, unique = true)
+    private int idConductor;
+
 
     @ManyToOne
     @JoinColumn(name = "id_horario", nullable = false)
@@ -29,10 +32,18 @@ public class Conductor extends Usuario {
     }
 
     public Conductor(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono,
-                     HorarioTrabajo horario, String permiso) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono);
+                     String correo,HorarioTrabajo horario, String permiso) {
+        super(idUsuario, nombre, apellidoP, apellidoM, telefono, correo, "Conductor");
+        this.idConductor=idUsuario;
         this.horario = horario;
         this.permiso = permiso;
+    }
+     public int getIdConductor() {
+        return idConductor;
+    }
+
+    public void setIdConductor(int idConductor) {
+        this.idConductor = idConductor;
     }
 
     public HorarioTrabajo getHorario() {

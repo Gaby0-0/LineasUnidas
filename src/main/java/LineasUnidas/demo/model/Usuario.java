@@ -29,15 +29,22 @@ public abstract class Usuario {
     protected String apellidoM;
 
     protected String telefono;
+    
+    @Column(unique = true) 
+    protected String correo;
+
+    protected String rol;
 
     public Usuario() {}
 
-    public Usuario(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono) {
+    public Usuario(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono, String correo, String rol) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
         this.telefono = telefono;
+        this.correo= correo;
+        this.rol=rol;
     }
 
   
@@ -83,5 +90,20 @@ public abstract class Usuario {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }
