@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>LINEAS UNIDAS - SABEMOS VIAJAR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      background-color: #f4f4f4;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #ff5500;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .driver-list {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .driver {
+      text-align: center;
+    }
+    .driver img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff5500;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff5500;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #3a3a3a;
+      color: white;
+    }
+    .viajes-section {
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<header style="display: flex; align-items: center; gap: 20px;">
+  <img src="lineasunidasLOGO.png" alt="Logo Lineas Unidas" style="height: 60px;">
+  <div>
+    <h1></h1>
+    <p></p>
+  </div>
+</header>
+
+  <header style="background-color: #f4f4f4; padding: 10px 20px;">
+  <div style="display: flex; justify-content: flex-end; align-items: center; gap: 30px;">
+    
+    <nav>
+      <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+        <li><a href="#" style="color: black; text-decoration: none;">Home</a></li>
+        <li><a href="#" style="color: black; text-decoration: none;">Rutas y Horarios</a></li>
+        <li><a href="#" style="color: black; text-decoration: none;">Administrar Viajes</a></li>
+        <li><a href="#" style="color: black; text-decoration: none;">Transporte</a></li>
+      </ul>
+    </nav>
+
+    <div style="display: flex; gap: 10px;">
+      <button style="background-color: white; color: #003366; border: none; padding: 5px 10px; border-radius: 4px;">ID</button>
+      <button style="background-color: white; color: #003366; border: none; padding: 5px 10px; border-radius: 4px;">EN</button>
+    </div>
+
+    <div>
+      <img src="gerente.jpg" alt="Perfil del gerente" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+    </div>
+    
+  </div>
+</header>
+
+
+
+<section>
+  <h2>Administrar Viajes</h2>
+  <label for="origen">Origen</label>
+  <input type="text" id="origen" placeholder="Ingresa el origen del viaje">
+
+  <label for="destino">Destino</label>
+  <input type="text" id="destino" placeholder="Ingresa destino del viaje">
+
+  <label for="horario">Horario</label>
+  <input type="time" id="horario">
+
+  <label for="fecha">Fecha</label>
+  <input type="date" id="fecha">
+</section>
+
+<section>
+  <h2>Transporte</h2>
+  <label>Conductores Disponibles</label>
+  <div class="driver-list">
+    <div class="driver">
+      <img src="jaime_ramirez.jpg" alt="Jaime Ramírez">
+      <p>Jaime Ramírez</p>
+    </div>
+    <div class="driver">
+      <img src="santiago_lima.jpg" alt="Santiago Lima">
+      <p>Santiago Lima</p>
+    </div>
+    <div class="driver">
+      <img src="juanDiaz.jpg" alt="Juan Diaz">
+      <p>Juan Diaz</p>
+    </div>
+  </div>
+
+  <label for="matricula">Asignar urban disponible</label>
+  <select id="matricula">
+    <option>Selecciona la matrícula</option>
+  </select>
+
+  <label for="capacidad">Capacidad</label>
+  <select id="capacidad">
+    <option>20 personas</option>
+  </select>
+
+  <button>Registrar</button>
+</section>
+
+<section class="viajes-section">
+  <h2>Viajes Creados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Ruta</th>
+        <th>Horario</th>
+        <th>Matrícula de transporte</th>
+        <th>Conductor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VJ123</td>
+        <td>Redondo</td>
+        <td>Miahuatlán-Oaxaca</td>
+        <td>Salida: 10:00 pm, Llegada: 12:</td>
+        <td>JSQ-121</td>
+        <td>Juan Sebastian</td>
+      </tr>
+      <tr>
+        <td>VJ124</td>
+        <td>Redondo</td>
+        <td>Oaxaca-Miahuatlán</td>
+        <td>—</td>
+        <td>JSQ-122</td>
+        <td>Lucas Olivera</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>
