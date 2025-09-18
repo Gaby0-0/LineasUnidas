@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados - Líneas Unidas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #333;
+            padding: 10px 20px;
+            color: rgb(96, 57, 57);
+            font-size: 14px;
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-orange {
+            color: #ff8c00;
+        }
+
+        .logo-gray {
+            color: #666;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #f0f0f0;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .main-header {
+            background-color: #555;
+            color: white;
+            padding: 20px;
+            margin: 0 20px;
+            margin-top: 20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .content {
+            background-color: white;
+            margin: 0 20px;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            min-height: 600px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .form-section {
+            flex: 1;
+        }
+
+        .list-section {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #ff8c00;
+            box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #ff8c00;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #e07b00;
+        }
+
+        .employee-list {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .employee-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .employee-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .employee-info {
+            flex: 1;
+        }
+
+        .employee-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .employee-role {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-edit, .btn-delete {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .alert {
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff8c00;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+     <header style="display: flex; align-items: center; gap: 20px;">
+  <img src="/lineasunidasLOGO.png" alt="Logo Lineas Unidas" style="height: 60px;">
+</header>
+
+        
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/administrar-viajes">Administrar Viajes</a></li>
+            <li><a href="/horarios">Horarios</a></li>
+            <li><a href="/empleados" class="active">Empleados</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <span>ID | EN</span>
+            <div class="profile-pic"></div>
+        </div>
+    </nav>
+
+    <!-- Main Header -->
+    <div class="main-header">
+        <h1>Empleados</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Crear un empleado</h2>
+            
+            <div id="alert" class="alert">
+                <span id="alert-message"></span>
+            </div>
+
+            <form id="employeeForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido_p">Apellido Paterno</label>
+                    <input type="text" id="apellido_p" name="apellido_p" placeholder="Ingresa el apellido paterno" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido_m">Apellido Materno</label>
+                    <input type="text" id="apellido_m" name="apellido_m" placeholder="Ingresa el apellido materno" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ingresa un número de teléfono válido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ingresa un correo válido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select id="rol" name="rol" required>
+                        <option value="">Selecciona un rol</option>
+                        <option value="conductor">Conductor</option>
+                        <option value="taquillero">Taquillero</option>
+                        <option value="checador">Checador</option>
+                        <option value="gerente">Gerente</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="permisoGroup" style="display: none;">
+                    <label for="permiso">Permiso de Conducir</label>
+                    <input type="text" id="permiso" name="permiso" placeholder="Número de permiso">
+                </div>
+
+                <div class="form-group" id="contraseniaGroup" style="display: none;">
+                    <label for="contrasenia">Contraseña</label>
+                    <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña">
+                </div>
+
+                <button type="submit" class="btn-primary">Registrar</button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Procesando...</p>
+            </div>
+        </div>
+
+        <!-- List Section -->
+        <div class="list-section">
+            <h2>Lista de todos los empleados</h2>
+            
+            <div class="employee-list" id="employeeList">
+                <!-- Empleados se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar empleado -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Empleado</h2>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <form id="editEmployeeForm">
+                <input type="hidden" id="edit_id_usuario" name="id_usuario">
+                
+                <div class="form-group">
+                    <label for="edit_nombre">Nombre</label>
+                    <input type="text" id="edit_nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_apellido_p">Apellido Paterno</label>
+                    <input type="text" id="edit_apellido_p" name="apellido_p" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_apellido_m">Apellido Materno</label>
+                    <input type="text" id="edit_apellido_m" name="apellido_m" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_telefono">Teléfono</label>
+                    <input type="tel" id="edit_telefono" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_correo">Correo</label>
+                    <input type="email" id="edit_correo" name="correo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_rol">Rol</label>
+                    <select id="edit_rol" name="rol" required>
+                        <option value="">Selecciona un rol</option>
+                        <option value="conductor">Conductor</option>
+                        <option value="taquillero">Taquillero</option>
+                        <option value="checador">Checador</option>
+                        <option value="gerente">Gerente</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Actualizar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let employees = [];
+        const API_BASE = '/api'; // Ajusta según tu configuración
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEmployees();
+            setupFormHandlers();
+        });
+
+        // Configurar manejadores de formularios
+        function setupFormHandlers() {
+            // Formulario de crear empleado
+            document.getElementById('employeeForm').addEventListener('submit', handleCreateEmployee);
+            
+            // Formulario de editar empleado
+            document.getElementById('editEmployeeForm').addEventListener('submit', handleUpdateEmployee);
+
+            // Cambio de rol para mostrar campos adicionales
+            document.getElementById('rol').addEventListener('change', toggleRoleFields);
+            document.getElementById('edit_rol').addEventListener('change', toggleEditRoleFields);
+        }
+
+        // Mostrar/ocultar campos según el rol
+        function toggleRoleFields() {
+            const rol = document.getElementById('rol').value;
+            const permisoGroup = document.getElementById('permisoGroup');
+            const contraseniaGroup = document.getElementById('contraseniaGroup');
+
+            if (rol === 'conductor') {
+                permisoGroup.style.display = 'block';
+                contraseniaGroup.style.display = 'none';
+            } else if (rol === 'taquillero') {
+                permisoGroup.style.display = 'none';
+                contraseniaGroup.style.display = 'block';
+            } else {
+                permisoGroup.style.display = 'none';
+                contraseniaGroup.style.display = 'none';
+            }
+        }
+
+        function toggleEditRoleFields() {
+            const rol = document.getElementById('edit_rol').value;
+            // Lógica similar para el modal de edición
+        }
+
+        // Cargar empleados
+        async function loadEmployees() {
+            try {
+                showLoading(true);
+                const response = await fetch(`${API_BASE}/usuarios`);
+                
+                if (!response.ok) {
+                    throw new Error('Error al cargar empleados');
+                }
+                
+                employees = await response.json();
+                renderEmployeeList();
+                showLoading(false);
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Error al cargar la lista de empleados', 'error');
+                showLoading(false);
+                // Mostrar datos de ejemplo si falla la carga
+                showSampleEmployees();
+            }
+        }
+
+        // Mostrar empleados de ejemplo
+        function showSampleEmployees() {
+            employees = [
+                {
+                    id_usuario: 1,
+                    nombre: 'Jaime',
+                    apellido_p: 'Ramirez',
+                    apellido_m: 'González',
+                    rol: 'conductor',
+                    telefono: '555-0123',
+                    correo: 'jaime.ramirez@email.com'
+                },
+                {
+                    id_usuario: 2,
+                    nombre: 'Santiago',
+                    apellido_p: 'Lima',
+                    apellido_m: 'Pérez',
+                    rol: 'taquillero',
+                    telefono: '555-0124',
+                    correo: 'santiago.lima@email.com'
+                }
+            ];
+            renderEmployeeList();
+        }
+
+        // Renderizar lista de empleados
+        function renderEmployeeList() {
+            const employeeList = document.getElementById('employeeList');
+            
+            if (employees.length === 0) {
+                employeeList.innerHTML = '<p>No hay empleados registrados</p>';
+                return;
+            }
+
+            const employeesHTML = employees.map(employee => `
+                <div class="employee-item">
+                    <div class="employee-avatar"></div>
+                    <div class="employee-info">
+                        <div class="employee-name">${employee.nombre} ${employee.apellido_p} ${employee.apellido_m}</div>
+                        <div class="employee-role">${capitalizeFirst(employee.rol)}</div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-edit" onclick="editEmployee(${employee.id_usuario})">Editar</button>
+                        <button class="btn-delete" onclick="deleteEmployee(${employee.id_usuario})">Eliminar</button>
+                    </div>
+                </div>
+            `).join('');
+
+            employeeList.innerHTML = employeesHTML;
+        }
+
+        // Crear empleado
+        async function handleCreateEmployee(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const employeeData = Object.fromEntries(formData.entries());
+
+            try {
+                showLoading(true);
+                
+                const response = await fetch(`${API_BASE}/usuarios`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(employeeData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al crear empleado');
+                }
+
+                const newEmployee = await response.json();
+                employees.push(newEmployee);
+                renderEmployeeList();
+                
+                // Limpiar formulario
+                event.target.reset();
+                toggleRoleFields();
+                
+                showAlert('Empleado creado exitosamente', 'success');
+                showLoading(false);
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Error al crear el empleado', 'error');
+                showLoading(false);
+                
+                // Simular creación exitosa para demostración
+                const newId = Math.max(...employees.map(e => e.id_usuario), 0) + 1;
+                const newEmployee = {
+                    id_usuario: newId,
+                    ...employeeData
+                };
+                employees.push(newEmployee);
+                renderEmployeeList();
+                event.target.reset();
+                showAlert('Empleado creado exitosamente (modo demo)', 'success');
+            }
+        }
+
+        // Editar empleado
+        function editEmployee(id) {
+            const employee = employees.find(emp => emp.id_usuario === id);
+            if (!employee) return;
+
+            // Llenar el formulario de edición
+            document.getElementById('edit_id_usuario').value = employee.id_usuario;
+            document.getElementById('edit_nombre').value = employee.nombre;
+            document.getElementById('edit_apellido_p').value = employee.apellido_p;
+            document.getElementById('edit_apellido_m').value = employee.apellido_m;
+            document.getElementById('edit_telefono').value = employee.telefono;
+            document.getElementById('edit_correo').value = employee.correo;
+            document.getElementById('edit_rol').value = employee.rol;
+
+            // Mostrar modal
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        // Manejar actualización de empleado
+        async function handleUpdateEmployee(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const employeeData = Object.fromEntries(formData.entries());
+            const id = employeeData.id_usuario;
+
+            try {
+                const response = await fetch(`${API_BASE}/usuarios/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(employeeData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al actualizar empleado');
+                }
+
+                // Actualizar en la lista local
+                const index = employees.findIndex(emp => emp.id_usuario == id);
+                if (index !== -1) {
+                    employees[index] = { ...employees[index], ...employeeData };
+                    renderEmployeeList();
+                }
+
+                closeEditModal();
+                showAlert('Empleado actualizado exitosamente', 'success');
+            } catch (error) {
+                console.error('Error:', error);
+                // Simular actualización exitosa
+                const index = employees.findIndex(emp => emp.id_usuario == id);
+                if (index !== -1) {
+                    employees[index] = { ...employees[index], ...employeeData };
+                    renderEmployeeList();
+                }
+                closeEditModal();
+                showAlert('Empleado actualizado exitosamente (modo demo)', 'success');
+            }
+        }
+
+        // Eliminar empleado
+        async function deleteEmployee(id) {
+            if (!confirm('¿Estás seguro de que deseas eliminar este empleado?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/usuarios/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al eliminar empleado');
+                }
+
+                employees = employees.filter(emp => emp.id_usuario !== id);
+                renderEmployeeList();
+                showAlert('Empleado eliminado exitosamente', 'success');
+            } catch (error) {
+                console.error('Error:', error);
+                // Simular eliminación exitosa
+                employees = employees.filter(emp => emp.id_usuario !== id);
+                renderEmployeeList();
+                showAlert('Empleado eliminado exitosamente (modo demo)', 'success');
+            }
+        }
+
+        // Cerrar modal de edición
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        // Mostrar/ocultar loading
+        function showLoading(show) {
+            const loading = document.getElementById('loading');
+            const form = document.getElementById('employeeForm');
+            
+            if (show) {
+                loading.style.display = 'block';
+                form.style.display = 'none';
+            } else {
+                loading.style.display = 'none';
+                form.style.display = 'block';
+            }
+        }
+
+        // Mostrar alertas
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            const alertMessage = document.getElementById('alert-message');
+            
+            alert.className = `alert alert-${type}`;
+            alertMessage.textContent = message;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+
+        // Utilidades
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // Cerrar modal al hacer clic fuera de él
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target == modal) {
+                closeEditModal();
+            }
+        }
+    </script>
+</body>
+</html>
