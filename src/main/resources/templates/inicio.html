@@ -1,40 +1,886 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Lineas Unidas</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Líneas Unidas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-    
-        .menu {
-            text-align: right; 
-            margin-right: 200px;
-            margin-bottom: 20px; 
+        /* --- ESTILOS GENERALES --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
         }
 
-        .menu a {
-            display: inline-block;
-            margin-left: 40px;
-            padding: 10px 15px;
-            color: rgb(11, 11, 11);
+        section,
+        header,
+        footer {
+            padding: 20px 50px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* mejor usar center en lugar de left */
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px 80px; /* 20px arriba/abajo, 40px izquierda/derecha */
+        }
+
+        .logo {
+            height: 90px;
+            width: 250px;
+        }
+
+        .navbar a {
+            color: #555;
             text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
         }
 
-        h1 {
+        .login-button {
+            background-color: #ff9100;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- SECCIÓN PRINCIPAL Y FORMULARIO --- */
+        .hero-section {
+            background-image: url('imagenes/Urban1.png');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+        }
+
+        .booking-form-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+            color: white;
+        }
+
+        .form-title {
+            color: white;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .form-field {
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        .form-field:last-child {
+            margin-right: 0;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-with-icon {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .input-with-icon i {
+            color: white;
+            margin-right: 10px;
+        }
+
+        .input-with-icon input,
+        .input-with-icon select {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            color: white;
+        }
+
+        .input-with-icon input::placeholder,
+        .input-with-icon select {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .quantity-control i {
+            color: white;
+            margin-right: 10px;
+        }
+
+        .quantity-control input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: white;
+        }
+
+        .quantity-control input::-webkit-outer-spin-button,
+        .quantity-control input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .quantity-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        .button-primary {
+            background-color: #ff9100;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 15px;
+            text-transform: uppercase;
+        }
+
+        .button-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- SECCIÓN DE "NUESTROS VIAJES" --- */
+        .travel-section {
+            background-color: white;
+            text-align: center;
+        }
+
+        .travel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .travel-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .travel-title i {
+            color: #ff9100;
+            margin-right: 10px;
+        }
+
+        .travel-header a {
+            color: #ff9100;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .travel-cards {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+
+        .card {
+            position: relative;
+            flex-shrink: 0;
+            width: 280px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card-text {
+            margin: 0;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .carousel-btn {
+            background-color: #ff9100;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 2;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+        }
+
+        .carousel-btn.prev-btn {
+            left: 20px;
+        }
+
+        .carousel-btn.next-btn {
+            right: 20px;
+        }
+
+        /* --- SECCIÓN DE "TE OFRECEMOS" --- */
+        .offer-section {
+            text-align: center;
+            background-color: #f6e6d5;
+        }
+
+        .offer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .offer-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
             text-align: left;
+        }
+
+        .offer-item.orange {
+            background-color: #ff9100;
+            color: white;
+        }
+
+        .offer-item .icon-container {
+            background-color: #f7f7f7;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .offer-item.orange .icon-container {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .offer-item .icon-container i {
+            color: #ff9100;
+        }
+
+        .offer-item.orange .icon-container i {
+            color: white;
+        }
+
+        /* --- SECCIÓN DE "TRANSPORTES DE CONFIANZA" --- */
+        .stats-section {
+            text-align: center;
+            background-color: white;
+        }
+
+        .stats-title {
+            margin-bottom: 50px;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ff9100;
+        }
+
+        .stat-text {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* --- SECCIÓN DE "MISIÓN" --- */
+        .mission-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #f0f2f5;
+            padding: 50px;
+            height: auto;
+        }
+
+        .mission-content {
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-logo-container img {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        .footer {
+            background-color: #333;
+            color: white;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding-bottom: 20px;
+        }
+
+        .footer-col {
+            flex: 1;
+        }
+
+        .footer-col h5 {
+            color: #ff9100;
+            margin-top: 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #555;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* --- ESTILOS PARA EL MODAL --- */
+        .modal-container {
+            display: none;
+            position: fixed;
+            z-index: 20;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 1000px;
+            color: #fff;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            text-align: center;
+            margin-top: 0;
+            color: #ff9100;
+        }
+
+        .close-btn {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .all-travel-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* --- ESTILOS PARA LA LISTA DESPLEGABLE PERSONALIZADA --- */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: #555;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .dropdown-list.show {
+            display: block;
+        }
+
+        .dropdown-list li {
+            padding: 10px 15px;
+            cursor: pointer;
+            color: #ff9100;
+        }
+
+        .dropdown-list li:hover {
+            background-color: #777;
+        }
+
+        .dropdown-list li.hidden {
+            display: none;
         }
     </style>
 </head>
+
 <body>
-    <div class="menu">
-        <a href="/">Inicio</a>
-        <a href="/boleto">Comprar boleto</a>
-        <a href="/nosotros">Acerca de Nosotros</a>
-        <a href="/contacto">Contacto</a>
-        <a href="/login">Login</a>
+    <header class="header">
+        <div class="logo-container">
+            <img src="/imagenes/logo.png" alt="Líneas Unidas Logo" class="logo" />
+        </div>
+        <nav class="navbar">
+            <a href="/" class="nav-item">Inicio</a>
+            <a href="/nosotros" class="nav-item">Acerca de Nosotros</a>
+            <a href="/contacto" class="nav-item">Contacto</a>
+        </nav>
+        <button class="login-button" onclick="location.href='/login'">Iniciar</button>
+    </header>
+
+    <section class="hero-section">
+        <div class="booking-form-container">
+            <h1 class="form-title">Boleto de Viaje</h1>
+            <form class="booking-form">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="origen">Origen</label>
+                        <div class="input-with-icon dropdown-container">
+                            <i class="fas fa-map-marker-alt dropdown-icon"></i>
+                            <input type="text" id="origen" placeholder="Ingresa tu origen" class="dropdown-input" />
+                            <ul class="dropdown-list">
+                                <li>Oaxaca de Juárez</li>
+                                <li>Miahuatlán de Porfirio Díaz</li>
+                                <li>San Pedro Pochutla</li>
+                                <li>Puerto Escondido</li>
+                                <li>Puerto Ángel</li>
+                                <li>San Jose del Pacífico</li>
+                                <li>Zipolite</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="destino">Destino</label>
+                        <div class="input-with-icon dropdown-container">
+                            <i class="fas fa-map-marker-alt dropdown-icon"></i>
+                            <input type="text" id="destino" placeholder="Ingresa tu destino" class="dropdown-input" />
+                            <ul class="dropdown-list">
+                                <li>Oaxaca de Juárez</li>
+                                <li>Miahuatlán de Porfirio Díaz</li>
+                                <li>San Pedro Pochutla</li>
+                                <li>Puerto Escondido</li>
+                                <li>Puerto Ángel</li>
+                                <li>San Jose del Pacífico</li>
+                                <li>Zipolite</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="fecha">Fecha</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                            <input type="date" id="fecha" />
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="boleto-type">Selecciona tipo de boleto</label>
+                        <div class="input-with-icon dropdown-container">
+                            <i class="fas fa-ticket-alt dropdown-icon"></i>
+                            <input type="text" id="boleto-type" placeholder="Selecciona tipo de boleto"
+                                class="dropdown-input" />
+                            <ul class="dropdown-list">
+                                <li>Sencillo</li>
+                                <li>Redondo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row form-row-quantity">
+                    <div class="form-field">
+                        <label for="cantidad">Cantidad</label>
+                        <div class="quantity-control">
+                            <i class="fas fa-user-friends"></i>
+                            <button type="button" class="quantity-btn minus-btn">-</button>
+                            <input type="number" id="cantidad" value="0" />
+                            <button type="button" class="quantity-btn plus-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="button-primary">Reservar Boleto</button>
+                    <button type="button" class="button-secondary">Ver Circulación</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="travel-section">
+        <div class="travel-header">
+            <div class="travel-title">
+                <i class="fas fa-ticket-alt"></i>
+                <h2>Nuestros Viajes</h2>
+            </div>
+            <a href="#" id="view-all-link">Ver más recomendación</a>
+        </div>
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn">&lt;</button>
+            <div class="travel-cards" id="carousel">
+            </div>
+            <button class="carousel-btn next-btn">&gt;</button>
+        </div>
+    </section>
+
+    <div id="modal" class="modal-container">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Todos Nuestros Destinos</h3>
+            <div id="all-travel-cards" class="all-travel-cards">
+            </div>
+        </div>
     </div>
 
-    <h1>Inicio</h1>
-        <p>Bienvenido a lineas Unidas</p>
-</body>
-</html>
+    <section class="offer-section">
+        <h3>Te Ofrecemos</h3>
+        <div class="offer-grid">
+            <div class="offer-item orange">
+                <div class="icon-container"><i class="fas fa-clock"></i></div>
+                <h4>Personal Capacitado</h4>
+                <p>Nuestros personal altamente capacitado, desde conductores hasta equipo de soporte, está comprometido con
+                    brindarte un servicio profesional y amable en cada trayecto.
+                </p>
+            </div>
+            <div class="offer-item">
+                <div class="icon-container"><i class="fas fa-user-shield"></i></div>
+                <h4>Viajes Seguros</h4>
+                <p>Todas nuestras unidades cuentan con seguro de viaje y están equipados con los más altos estándares de
+                    seguridad mecánica para que viajes con confianza.
+                </p>
+            </div>
+            <div class="offer-item orange">
+                <div class="icon-container"><i class="fas fa-bus-alt"></i></div>
+                <p>Los Mejores Destinos Conectamos los principales destinos del estado.</p>
+            </div>
+        </div>
+    </section>
 
+    <section class="stats-section">
+        <h3 class="stats-title">Transportes de confianza</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h4 class="stat-number">100</h4>
+                <p class="stat-text">Unidades en Servicio</p>
+            </div>
+            <div class="stat-item">
+                <h4 class="stat-number">Más de 10</h4>
+                <p class="stat-text">De experiencia</p>
+            </div>
+            <div class="stat-item">
+                <h4 class="stat-number">100 %</h4>
+                <p class="stat-text">Empresa Oaxaqueña</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="mission-content">
+            <h3>Misión</h3>
+            <p>Conectamos a las personas con un servicio de manera segura, eficiente y confiable.</p>
+            <p>Nos comprometemos a ofrecer un servicio de transporte que priorice la comodidad, la seguridad y la
+                satisfacción de nuestros pasajeros, siempre con el espíritu de saber viajar.
+            </p>
+        </div>
+    </section>
+
+    <div class="footer-logo-container">
+        <img src="/imagenes/logo2.png" alt="Líneas Unidas SERPEVASS" />
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>Matriz CD. Oaxaca</h5>
+                <p>Tel. +52 951 516 2472 / 951 187 5511</p>
+                <p>Dir. Calle Bustamante esquina con Xóchilt #601</p>
+                <p>Centro, C.P.68000 Oaxaca de Juárez, Oaxaca</p>
+            </div>
+            <div class="footer-col">
+                <h5>Matriz Miahuatlán de Porfirio Díaz</h5>
+                <p>Tel. +52 951 572 1531 / 951 187 5512</p>
+                <p>Dir. Calle 5 De Febrero #203 Col. Centro</p>
+                <p>C.P.70805 Miahuatlán de Porfirio Díaz, Oax.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Líneas Unidas Serpevass</h5>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/lineasunidasserpevass1/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/LineasUnidasMiahuatecos"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://share.google/pa8nOjrJMabGmAJ6X"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Líneas Unidas Serpevass.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DATOS DE LOS DESTINOS (UNA ÚNICA FUENTE) ---
+            const travelDestinations = [
+                { name: 'Miahuatlán de Porfirio Díaz', image: 'imagenes/miahuatlan.jpg' },
+                { name: 'San Pedro Pochutla', image: 'imagenes/pochutla.jpg' },
+                { name: 'San José del Pacífico', image: 'imagenes/sanjosedelpacifico.jpg' },
+                { name: 'Zipolite', image: 'imagenes/zipolite.jpg' },
+                { name: 'Puerto Ángel', image: 'imagenes/puertoangel.jpg' },
+                { name: 'Puerto Escondido', image: 'imagenes/puertoescondido.png' },
+            ];
+
+            // --- CÓDIGO PARA EL CARRUSEL DE VIAJES ---
+            const carousel = document.getElementById('carousel');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+
+            // Genera las tarjetas para el carrusel (solo las primeras 4)
+            const carouselItems = travelDestinations.slice(0, 4);
+            carouselItems.forEach(destination => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${destination.image}" alt="${destination.name}" class="card-img" />
+                    <div class="card-content">
+                        <p class="card-text">${destination.name}</p>
+                    </div>
+                `;
+                carousel.appendChild(card);
+            });
+
+            // Lógica del carrusel con índice
+            let currentIndex = 0;
+            const cardWidth = 300; // Ancho de la tarjeta en píxeles (incluyendo margen)
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < carouselItems.length - 1) {
+                    currentIndex++;
+                    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                }
+            });
+
+            // --- CÓDIGO PARA EL MODAL "VER MÁS" ---
+            const viewAllLink = document.getElementById('view-all-link');
+            const modal = document.getElementById('modal');
+            const closeModalBtn = document.querySelector('.close-btn');
+            const allTravelCardsContainer = document.getElementById('all-travel-cards');
+
+            // Genera todas las tarjetas para el modal
+            travelDestinations.forEach(destination => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${destination.image}" alt="${destination.name}" class="card-img" />
+                    <div class="card-content">
+                        <p class="card-text">${destination.name}</p>
+                    </div>
+                `;
+                allTravelCardsContainer.appendChild(card);
+            });
+
+            viewAllLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                modal.style.display = 'flex';
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Oculta el modal si se hace clic fuera del contenido
+            window.addEventListener('click', (event) => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // --- CÓDIGO PARA LOS MENÚS DESPLEGABLES ---
+            const dropdownContainers = document.querySelectorAll('.dropdown-container');
+
+            dropdownContainers.forEach(container => {
+                const input = container.querySelector('.dropdown-input');
+                const list = container.querySelector('.dropdown-list');
+
+                container.addEventListener('click', (event) => {
+                    if (event.target === input || event.target.classList.contains('dropdown-icon')) {
+                        list.classList.add('show');
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!container.contains(event.target)) {
+                        list.classList.remove('show');
+                    }
+                });
+
+                input.addEventListener('input', () => {
+                    const filter = input.value.toLowerCase();
+                    const items = list.querySelectorAll('li');
+
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(filter)) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+
+                    list.classList.add('show');
+                });
+
+                list.addEventListener('click', (event) => {
+                    if (event.target.tagName === 'LI') {
+                        const selectedValue = event.target.textContent;
+                        input.value = selectedValue;
+                        list.classList.remove('show');
+                    }
+                });
+            });
+
+            // --- CÓDIGO PARA LOS BOTONES DE CANTIDAD DE BOLETOS ---
+            const quantityContainer = document.querySelector('.quantity-control');
+            const minusBtn = quantityContainer.querySelector('.minus-btn');
+            const plusBtn = quantityContainer.querySelector('.plus-btn');
+            const quantityInput = quantityContainer.querySelector('#cantidad');
+
+            minusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(quantityInput.value);
+                if (currentValue > 0) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+            });
+        });
+    </script>
+</body>
+
+</html>

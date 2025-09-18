@@ -9,7 +9,6 @@ package LineasUnidas.demo.model;
  * @author magal
  */
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -19,8 +18,6 @@ import jakarta.persistence.Table;
 @Table(name = "checador")
 public class Checador extends Usuario {
 
-    @Column(name = "id_checador")
-    private int idChecador;
 
     @ManyToOne
     @JoinColumn(name = "id_horario")
@@ -28,20 +25,13 @@ public class Checador extends Usuario {
 
     public Checador() {}
 
-    public Checador(int idUsuario, String nombre, String apellidoP, String apellidoM,
+    public Checador( String nombre, String apellidoP, String apellidoM,
                     String telefono, String correo, HorarioTrabajo horario) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono, correo, "Checador");
-        this.idChecador = idChecador;
+        super( nombre, apellidoP, apellidoM, telefono, correo, "Checador");
+        
         this.horario = horario;
     }
 
-    public int getIdChecador() {
-        return idChecador;
-    }
-
-    public void setIdChecador(int idChecador) {
-        this.idChecador = idChecador;
-    }
 
     public HorarioTrabajo getHorario() {
         return horario;

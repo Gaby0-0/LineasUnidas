@@ -21,8 +21,6 @@ import jakarta.persistence.Table;
 @Table(name = "cliente")
 public class Cliente extends Usuario {
 
-    @Column(name = "id_cliente", nullable = false, unique = true)
-    private int idCliente;
     private String contrasenia;
     @Column(name = "metodo_compra")
     private String metodoCompra;
@@ -34,19 +32,18 @@ public class Cliente extends Usuario {
         super();
     }
 
-    public Cliente(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono, String correo, String metodoCompra) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono, correo, "Cliente");
-        this.idCliente = idUsuario;
+    public Cliente( String nombre, String apellidoP, String apellidoM, String telefono, String correo, String metodoCompra) {
+        super( nombre, apellidoP, apellidoM, telefono, correo, "Cliente");
         this.metodoCompra = metodoCompra;
     }
 
-    public int getIdCliente() {
+ /*  public int getIdCliente() {
         return idCliente;
     }
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
-    }
+    } */ 
 
     public String getMetodoCompra() {
         return metodoCompra;

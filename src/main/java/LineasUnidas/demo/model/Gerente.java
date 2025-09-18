@@ -10,7 +10,6 @@ package LineasUnidas.demo.model;
  */
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -18,23 +17,15 @@ import jakarta.persistence.Table;
 @Table(name = "gerente")
 public class Gerente extends Usuario {
 
-    @Column(name = "id_gerente", nullable = false, unique = true)
-    private int idGerente;
     
     public Gerente() {}
 
-    public Gerente(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono, String correo) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono, correo, "Gerente");
-        this.idGerente = idUsuario;
+    public Gerente( String nombre, String apellidoP, String apellidoM, String telefono, String correo) {
+        super( nombre, apellidoP, apellidoM, telefono, correo, "Gerente");
+       
     }
 
-    public int getIdGerente() {
-        return idGerente;
-    }
-
-    public void setIdGerente(int idGerente) {
-        this.idGerente = idGerente;
-    }
+  
 
     @Override
     public void registrar() {

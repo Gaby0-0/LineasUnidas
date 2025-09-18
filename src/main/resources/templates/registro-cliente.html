@@ -188,42 +188,42 @@
       <!-- Formulario -->
       <div>
         <h2>Registro</h2>
-        <form>
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Nombre">
-          </div>
+  <form th:action="@{/registro-cliente}" method="post" th:object="${cliente}">
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" th:field="*{nombre}" placeholder="Nombre" required>
+  </div>
 
-          <div class="form-group">
-            <label for="apellidoM">Apellido Materno</label>
-            <input type="text" id="apellidoM" placeholder="Apellido Materno">
-          </div>
+  <div class="form-group">
+    <label for="apellidoP">Apellido Paterno</label>
+    <input type="text" id="apellidoP" th:field="*{apellidoP}" placeholder="Apellido Paterno" required>
+  </div>
 
-          <div class="form-group">
-            <label for="apellidoP">Apellido Paterno</label>
-            <input type="text" id="apellidoP" placeholder="Apellido Paterno">
-          </div>
+  <div class="form-group">
+    <label for="apellidoM">Apellido Materno</label>
+    <input type="text" id="apellidoM" th:field="*{apellidoM}" placeholder="Apellido Materno" required>
+  </div>
 
-          <div class="form-group">
-            <label for="correo">Correo</label>
-            <input type="email" id="correo" placeholder="Correo">
-          </div>
+  <div class="form-group">
+    <label for="correo">Correo</label>
+    <input type="email" id="correo" th:field="*{correo}" placeholder="Correo" required>
+  </div>
 
-          <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input type="text" id="telefono" placeholder="Teléfono">
-          </div>
+  <div class="form-group">
+    <label for="telefono">Teléfono</label>
+    <input type="text" id="telefono" th:field="*{telefono}" placeholder="Teléfono" required>
+  </div>
 
-          <div class="form-group">
-            <label for="contrasena">Contraseña</label>
-            <input type="password" id="contrasena" placeholder="Contraseña">
-          </div>
+  <div class="form-group">
+    <label for="contrasenia">Contraseña</label>
+    <input type="password" id="contrasenia" th:field="*{contrasenia}" placeholder="Contraseña" required>
+  </div>
 
-          <!-- Botón ocupa las dos columnas -->
-          <div class="form-button">
-            <button type="submit">Registrar</button>
-          </div>
-        </form>
+  <div class="form-button">
+    <button type="submit">Registrar</button>
+  </div>
+</form>
+
       </div>
     </div>
   </div>

@@ -8,7 +8,14 @@ package LineasUnidas.demo.model;
  *
  * @author magal
  */
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) 
@@ -37,8 +44,8 @@ public abstract class Usuario {
 
     public Usuario() {}
 
-    public Usuario(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono, String correo, String rol) {
-        this.idUsuario = idUsuario;
+    public Usuario( String nombre, String apellidoP, String apellidoM, String telefono, String correo, String rol) {
+        
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;

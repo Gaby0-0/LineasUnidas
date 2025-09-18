@@ -8,13 +8,18 @@ package LineasUnidas.demo.model;
  *
  * @author magal
  */
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "conductor")
 public class Conductor extends Usuario {
-    @Column(name = "id_conductor", nullable = false, unique = true)
-    private int idConductor;
+
 
 
     @ManyToOne
@@ -31,20 +36,13 @@ public class Conductor extends Usuario {
         super();
     }
 
-    public Conductor(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono,
+    public Conductor( String nombre, String apellidoP, String apellidoM, String telefono,
                      String correo,HorarioTrabajo horario, String permiso) {
-        super(idUsuario, nombre, apellidoP, apellidoM, telefono, correo, "Conductor");
-        this.idConductor=idUsuario;
+        super( nombre, apellidoP, apellidoM, telefono, correo, "Conductor");
         this.horario = horario;
         this.permiso = permiso;
     }
-     public int getIdConductor() {
-        return idConductor;
-    }
 
-    public void setIdConductor(int idConductor) {
-        this.idConductor = idConductor;
-    }
 
     public HorarioTrabajo getHorario() {
         return horario;
