@@ -22,7 +22,7 @@ public class HorarioTrabajoService {
 
     private final HorarioTrabajoRepository horarioRepo;
 
-    @Autowired
+
     public HorarioTrabajoService(HorarioTrabajoRepository horarioRepo) {
         this.horarioRepo = horarioRepo;
     }

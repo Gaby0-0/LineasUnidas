@@ -17,7 +17,6 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepo;
 
-    @Autowired
     public ClienteService(ClienteRepository clienteRepo) {
         this.clienteRepo = clienteRepo;
     }
