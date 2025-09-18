@@ -5,171 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta Taquillero</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #e5e5e5;
-            margin: 0;
-            padding: 20 px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            background: #fff;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #ddd;
-        }
-
-        header img {
-            height: 50px;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .btn-cerrar {
-            background: #ff6600;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        main {
-            max-width: 1100px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        h2 {
-            margin-top: 0;
-            color: #444;
-        }
-
-        section {
-            margin-bottom: 25px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-        }
-
-        label {
-            display: block;
-            margin: 8px 0 4px;
-            font-weight: bold;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #bbb;
-            border-radius: 5px;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            background: #ff6600;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #e65c00;
-        }
-
-        .historial {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .historial th,
-        .historial td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .historial th {
-            background: #444;
-            color: white;
-        }
-
-        .precio {
-            color: green;
-            font-weight: bold;
-        }
-
-        .info-personal {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .info-personal .formulario {
-            flex: 1;
-            margin-right: 20px;
-        }
-
-        .info-personal .imagen img {
-            max-width: 370px;
-            border-radius: 10px;
-        }
-
-        .boletos {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .boletos .reservarB {
-            flex: 1;
-            margin-right: 20px;
-        }
-
-        .boletos .consultaCir {
-            max-width: 370px;
-            border-radius: 10px
-        }
-
-        .label-checkbox {
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            font-style: italic;
-        }
-
-        .label-checkbox [type="checkbox"] {
-            
-            margin-right: 1px;
-        }
-    </style>
+    <link rel="stylesheet" href="taquillero.css">
 </head>
 
 <body>
     <header>
-        <img src="imagenes_taquillero/encabezado.png" alt="Lineas Unidas">
+        <img src="/src/main/resources/static/logo.png" alt="Lineas Unidas">
         <nav>
             <a href="#">Inicio</a>
-            <a href="#">Comprar Boleto</a>
-            <a href="#">Acerca de Nosotros</a>
-            <a href="#">Contacto</a>
-            <a href="#" class="btn-cerrar">Cerrar</a>
+            <a href="/boleto">Comprar Boleto</a>
+            <a href="/nosostros">Acerca de Nosotros</a>
+            <a href="/contacto">Contacto</a>
+            <a href="/login" class="btn-cerrar">Cerrar</a>
         </nav>
     </header>
 
@@ -194,7 +41,7 @@
                 <button class="btn">Editar Información</button>
             </div>
             <div class="imagen">
-                <img src="imagenes_taquillero/logo.png" alt="Camión" />
+                <img src="/logo.png" alt="Camión" />
 
             </div>
         </section>
@@ -233,7 +80,7 @@
             <div class="consultaCir">
                 <label>Viajes en circulación</label>
                 <button class="btn">Consultar</button>
-                <img src="imagenes_taquillero/urvan.png" alt="Urvan" width="370" style="opacity:0.5;" />
+                <img src="/urvan.png" alt="Urvan" width="370" style="opacity:0.5;" />
 
             </div>
 

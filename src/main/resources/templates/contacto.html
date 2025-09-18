@@ -1,38 +1,122 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Lineas Unidas</title>
+    <title>Vista Contacto</title>
     <style>
-      
-        .menu {
-            text-align: right; 
-            margin-right: 200px;
-            margin-bottom: 20px; 
+        body {
+            font-family: Arial, sans-serif;
+            background: #e5e5e5;
+            margin: 0;
+            padding: 20 px;
         }
 
-        .menu a {
-            display: inline-block;
-            margin-left: 40px; 
-            padding: 10px 15px;
-            color: rgb(11, 11, 11);
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav a {
+            margin: 0 15px;
             text-decoration: none;
+            color: #333;
+            font-weight: bold;
         }
 
-        h1 {
-            text-align: left;
+        .btn{
+             background: #ff6600;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+        }
+
+        .comentarios {
+            background: #fff;
+        }
+
+        section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0 4px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 23%;
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+        .direc{
+            background: #ff6600;
         }
     </style>
 </head>
-<body>
-    <div class="menu">
-        <a href="/">Inicio</a>
-        <a href="/boleto">Comprar boleto</a>
-        <a href="/nosotros">Acerca de Nosotros</a>
-        <a href="/contacto">Contacto</a>
-    </div>
 
-    <h1>Contacto</h1>
+<body>
+    <header>
+        <img src="/src/main/resources/static/logo.png" alt="Lineas Unidas">
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="/boleto">Comprar Boleto</a>
+            <a href="/nosostros">Acerca de Nosotros</a>
+            <a href="/contacto">Contacto</a>
+            <a href="/login" class="btn-cerrar">Cerrar</a>
+        </nav>
+    </header>
+    <div class="log">
+        <img src="logo.png" alt="Camión" />
+
+    </div>
+    
+        <section class="comentarios">
+            <h1>Contacto</h1>
+            <div class="formu">
+                <h3><em>Estamos atentos a tus comentarios</em></h3>
+                <label>Nombre</label>
+                <input type="text" placeholder="Ingresa tu nombre">
+                <label>Aepellidos</label>
+                <input type="text" placeholder="Ingresa tus apellidos">
+                <label>Correo Electrónico</label>
+                <input type="email" name="" id="">
+                <label>Comentarios</label>
+                <input type="text" placeholder="Dejanos saber tu opinión...">
+
+               <p><button class="btn">Enviar</button></p>
+            </div>
+        </section>
+        <section class="direc">
+            <p>CENTRAL CD. OAXACA</p>
+            <p>Tel. +52 951 572 15 31</p>
+            <p>951 187 5512</p>
+            <p>Calle 5 De Febrero #203 Col. Centro C.P 70805 Miahuatlán De Porfirio Díaz Oax.</p>
+            <p>   </p>
+            <p>   </p>
+            <p>CENTRAL MIAHUATLÁN</p>
+            <P>Tel. +52 951 516 2472 </P>
+            <p>951 187 5511</p>
+            <p>Calle Bustamante esquina con Xóchilt #601 Centro, C.P. 68000 Oaxaca de Juárez Oaxaca.</p>
+
+        </section>
+
+
 
 </body>
+
 </html>

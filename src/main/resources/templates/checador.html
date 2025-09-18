@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cuenta Checador</title>
+    <link rel="stylesheet" href="checador.css">
+</head>
+
+<body>
+    <header>
+        <img src="/src/main/resources/static/logo.png" alt="Lineas Unidas">
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="/boleto">Comprar Boleto</a>
+            <a href="/nosostros">Acerca de Nosotros</a>
+            <a href="/contacto">Contacto</a>
+            <a href="/login" class="btn-cerrar">Cerrar</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Bienvenido Esuario Checador</h2>
+
+        <section class="info-personal">
+            <div class="formulario">
+                <h3>Información Personal</h3>
+                <label>Nombre</label>
+                <input type="text" value="Nombre Apellidos">
+
+                <label>Correo Electrónico</label>
+                <input type="email" value="usuario@gmail.com">
+
+                <label>Número de Teléfono</label>
+                <input type="tel" value="951 189 00 67">
+
+                <label>Fecha de Nacimiento</label>
+                <input type="date">
+
+                <button class="btn" style="background-color: rgba(128, 128, 128, 0.5);">Editar Información</button>
+            </div>
+            <div class="imagen">
+                <img src="/logo.png" alt="Camión" />
+
+            </div>
+        </section>
+
+
+        <section class="registroU">
+            <div class="registro">
+                <h3>Registrar Actividad de Unidad</h3>
+
+                <label>Identificador de la Unidad</label>
+                <select id="unidad">
+                    <option>Selecciona la unidad</option>
+                    <option value="1">Unidad 1</option>
+                    <option value="23">Unidad 2</option>
+                </select>
+
+                <label>Número de pasajeros</label>
+                <input type="number">
+
+                <label>Disponibilidad</label>
+                <input type="number">
+
+                <label>Origen</label>
+                <select id="destino">
+                    <option>Selecciona el lugar de origen</option>
+                    <option value="Oaxaca">CD. de Oaxaca</option>
+                    <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
+                </select>
+                <label>Destino</label>
+                <select id="destino">
+                    <option>Selecciona el destino</option>
+                    <option value="Oaxaca">CD. de Oaxaca</option>
+                    <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
+                </select>
+
+                <label>Fecha</label>
+                <input type="date">
+
+                <label>Hora</label>
+                <select>
+                    <option>Selecciona horario</option>
+                </select>
+
+
+                <button class="btn">Confirmar</button>
+
+            </div>
+            <div style="text-align: right;">
+                <button class="btn">Viajes en Circulación</button>
+
+            </div>
+
+        </section>
+
+        <section>
+            <h3>Registrar Unidad en un Punto de Control</h3>
+            <label>Identificador de la Unidad</label>
+            <select id="unidad">
+                <option>Selecciona el lugar de origen del viaje</option>
+                <option value="Oaxaca">CD. de Oaxaca</option>
+                <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
+            </select>
+
+            <label>Número de pasajeros</label>
+            <input type="number">
+
+            <label>Disponibilidad</label>
+            <input type="number">
+
+            <label>Fecha</label>
+            <input type="date">
+
+            <label>Hora</label>
+            <input type="time">
+            <button class="btn">Confirmar</button>
+        </section>
+
+
+    </main>
+
+
+
+</body>
+<!--<script src=".js"></script>-->
+
+</html>
