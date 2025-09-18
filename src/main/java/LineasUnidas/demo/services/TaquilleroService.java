@@ -41,7 +41,7 @@ public class TaquilleroService {
             taquillero.setTelefono(detalles.getTelefono());
             taquillero.setCorreo(detalles.getCorreo());
             taquillero.setRol(detalles.getRol());
-            taquillero.setIdEmpleado(detalles.getIdEmpleado());
+            taquillero.setIdUsuario(detalles.getIdUsuario());
             taquillero.setHorario(detalles.getHorario());
             taquillero.setBoletos(detalles.getBoletos());
             taquillero.setContrasenia(detalles.getContrasenia());
@@ -62,7 +62,4 @@ public class TaquilleroService {
         return taquilleroRepo.findByCorreo(correo);
     }
 
-    public Taquillero buscarPorIdEmpleado(int idEmpleado) {
-        return taquilleroRepo.findByIdEmpleado(idEmpleado);
-    }
 }

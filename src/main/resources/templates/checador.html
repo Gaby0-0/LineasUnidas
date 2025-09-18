@@ -4,12 +4,159 @@
 <head>
     <meta charset="UTF-8">
     <title>Cuenta Checador</title>
-    <link rel="stylesheet" href="checador.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: #e5e5e5;
+    margin: 0;
+    padding: 20 px;}
+
+main {
+    min-height: 100%;   
+    background-color: #e5e5e5; 
+}
+
+header {
+    background: #fff;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+}
+
+header img {
+    height: 50px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.btn-cerrar {
+    background: #ff6600;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+main {
+    max-width: 1100px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    margin-top: 0;
+    color: #444;
+}
+
+section {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin: 8px 0 4px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #e65c00;
+}
+
+.historial {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.historial th,
+.historial td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.precio {
+    color: green;
+    font-weight: bold;
+}
+
+.info-personal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.info-personal .formulario {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.info-personal .imagen img {
+    max-width: 370px;
+    border-radius: 10px;
+}
+
+.boletos {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.boletos .reservarB {
+    flex: 1;
+    margin-right: 20px;
+}
+
+
+
+.label-checkbox {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-style: italic;
+}
+
+.label-checkbox [type="checkbox"] {
+
+    margin-right: 1px;
+}
+    </style>
 </head>
 
 <body>
     <header>
-        <img src="/src/main/resources/static/encabezado.png" alt="Lineas Unidas">
+        <img src="encabezado.png" alt="Lineas Unidas">
         <nav>
             <a href="/inicio">Inicio</a>
             <a href="/boleto">Comprar Boleto</a>
