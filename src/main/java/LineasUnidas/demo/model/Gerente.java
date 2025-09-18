@@ -10,7 +10,9 @@ package LineasUnidas.demo.model;
  */
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "gerente")
@@ -18,7 +20,7 @@ public class Gerente extends Usuario {
 
     @Column(name = "id_gerente", nullable = false, unique = true)
     private int idGerente;
-
+    
     public Gerente() {}
 
     public Gerente(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono, String correo) {

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - Líneas Unidas</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('imagenes/camioneta.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+
+    .encabezado {
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 50px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .encabezado img {
+      height: 50px;
+    }
+
+    .navegacion ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navegacion ul li {
+      display: inline;
+    }
+
+    .navegacion ul li a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .navegacion ul li a:hover {
+      color: orange;
+    }
+
+    .navegacion ul li a.boton-iniciar {
+      border: 1px solid orange;
+      padding: 5px 15px;
+      border-radius: 5px;
+      color: orange;
+      transition: all 0.3s;
+    }
+
+    .navegacion ul li a.boton-iniciar:hover {
+      background: orange;
+      color: white;
+    }
+
+
+    .contenedor-login {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .caja-login {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .caja-login h2 {
+      margin-bottom: 20px;
+      color: #1a1a4b;
+    }
+
+    .grupo-campo {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    .grupo-campo label {
+      font-size: 14px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .grupo-campo input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .grupo-campo input:focus {
+      border-color: orange;
+    }
+
+    .caja-login .enlaces-extra {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .caja-login .enlaces-extra a {
+      text-decoration: none;
+      color: gray;
+      font-size: 12px;
+    }
+
+    .boton {
+      width: 100%;
+      padding: 10px;
+      background: orange;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .boton:hover {
+      background: darkorange;
+    }
+
+    .crear-cuenta {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .crear-cuenta a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+
+    .pie-pagina {
+      text-align: center;
+      padding: 15px;
+      background: white;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="encabezado">
+    <img src="/lineasunidasLOGO.png" alt="Líneas Unidas Logo" style="width:200px; height:auto; border:1px solid red;">
+    <nav class="navegacion">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="comprar.html">Comprar Boleto</a></li>
+        <li><a href="acerca.html">Acerca de Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="login.html" class="boton-iniciar">Iniciar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <div class="contenedor-login">
+    <div class="caja-login">
+      <h2>Iniciar Sesión</h2>
+      <form class="formulario-login">
+        <div class="grupo-campo">
+          <label for="usuario">Usuario</label>
+          <input type="text" id="usuario" placeholder="Nombre de usuario" required>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" placeholder="Contraseña" required>
+        </div>
+
+        <div class="enlaces-extra">
+          <a href="recuperar.html">Recuperar contraseña</a>
+        </div>
+
+        <button type="submit" class="boton">Iniciar</button>
+
+        <div class="crear-cuenta">
+          <a href="/registro-cliente">Crear Cuenta</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <footer class="pie-pagina">
+    © 2025 Líneas Unidas Serpevass
+  </footer>
+
+</body>
+</html>

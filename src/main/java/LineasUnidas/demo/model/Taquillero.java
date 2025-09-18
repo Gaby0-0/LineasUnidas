@@ -8,9 +8,16 @@ package LineasUnidas.demo.model;
  *
  * @author magal
  */
-import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "taquillero")
@@ -23,7 +30,7 @@ public class Taquillero extends Usuario {
     @ManyToOne
     @JoinColumn(name = "id_horario", nullable = false)
     private HorarioTrabajo horario;
-
+    private String contrasenia;
     @ManyToMany
     @JoinTable(
         name = "taquillero_boleto", 
@@ -31,7 +38,7 @@ public class Taquillero extends Usuario {
         inverseJoinColumns = @JoinColumn(name = "id_boleto")
     )
     private Set<Boleto> boletos = new HashSet<>();
-
+    
     public Taquillero() {}
 
     public Taquillero(int idUsuario, String nombre, String apellidoP, String apellidoM, String telefono,
@@ -50,6 +57,11 @@ public class Taquillero extends Usuario {
 
     public Set<Boleto> getBoletos() { return boletos; }
     public void setBoletos(Set<Boleto> boletos) { this.boletos = boletos; }
+
+    public String getContrasenia() {return contrasenia;}
+    public void setContrasenia(String contrasenia) {this.contrasenia = contrasenia;}
+
+
 
     @Override
     public void registrar() {

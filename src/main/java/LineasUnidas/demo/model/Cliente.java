@@ -8,9 +8,14 @@ package LineasUnidas.demo.model;
  *
  * @author magal
  */
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
@@ -18,7 +23,7 @@ public class Cliente extends Usuario {
 
     @Column(name = "id_cliente", nullable = false, unique = true)
     private int idCliente;
-
+    private String contrasenia;
     @Column(name = "metodo_compra")
     private String metodoCompra;
 
@@ -59,6 +64,9 @@ public class Cliente extends Usuario {
         this.boletos = boletos;
     }
 
+    public String getContrasenia() {return contrasenia;}
+    public void setContrasenia(String contrasenia) {this.contrasenia = contrasenia;}
+ 
     public String comprarBoleto(Boleto boleto) {
         boletos.add(boleto);
         boleto.setCliente(this);
@@ -81,4 +89,6 @@ public class Cliente extends Usuario {
         System.out.println("Historial de boletos para el cliente: " + nombre);
         boletos.forEach(b -> System.out.println("Boleto ID: " + b.getIdBoleto()));
     }
+
+
 }

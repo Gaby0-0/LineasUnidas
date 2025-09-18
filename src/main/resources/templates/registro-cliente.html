@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - Líneas Unidas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f7f7f7;
+    }
+
+    /* Contenedor principal dividido en dos paneles */
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Panel izquierdo */
+    .left-panel {
+      background-color: #f6af59;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+      position: relative;
+    }
+
+    .left-panel img {
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .left-panel .footer-left {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #000;
+    }
+
+    .footer-left i {
+      font-style: normal;
+      margin-right: 5px;
+    }
+
+    /* Panel derecho */
+    .right-panel {
+      background-color: #fff;
+      width: 60%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Menú superior */
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #f8af55;
+    }
+
+    /* Título */
+    h2 {
+      text-align: center;
+      color: #1a1a4b;
+      margin-bottom: 60px;
+      font-size: 34px;
+    }
+
+    /* Formulario en dos columnas */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* dos columnas iguales */
+      gap: 70px; 
+    }
+
+    /* Cada grupo de campo */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 14px;
+    }
+
+    input {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #ff8c00;
+      outline: none;
+    }
+
+    /* Botón ocupa todo el ancho */
+    .form-button {
+      grid-column: span 2; /* ocupa las dos columnas */
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .form-button button {
+      padding: 14px 50px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .form-button button:hover {
+      background-color: #333;
+    }
+
+    /* Responsive para pantallas pequeñas */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .left-panel,
+      .right-panel {
+        width: 100%;
+      }
+      form {
+        grid-template-columns: 1fr; /* en una sola columna en móviles */
+      }
+      .form-button {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Panel izquierdo -->
+    <div class="left-panel">
+      <img src="lineasunidasLOGO.png" alt="Líneas Unidas">
+      <div class="footer-left">
+        <i>©</i> 2025 Líneas Unidas Serpevass
+      </div>
+    </div>
+
+    <!-- Panel derecho -->
+    <div class="right-panel">
+      <!-- Menú superior -->
+      <div class="menu">
+        <a href="/">Inicio</a>
+        <a href="/boleto">Comprar Boleto</a>
+        <a href="/nosotros">Acerca de Nosotros</a>
+        <a href="/contacto">Contacto</a>
+      </div>
+
+      <!-- Formulario -->
+      <div>
+        <h2>Registro</h2>
+        <form>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="apellidoM">Apellido Materno</label>
+            <input type="text" id="apellidoM" placeholder="Apellido Materno">
+          </div>
+
+          <div class="form-group">
+            <label for="apellidoP">Apellido Paterno</label>
+            <input type="text" id="apellidoP" placeholder="Apellido Paterno">
+          </div>
+
+          <div class="form-group">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" placeholder="Correo">
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" placeholder="Teléfono">
+          </div>
+
+          <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" placeholder="Contraseña">
+          </div>
+
+          <!-- Botón ocupa las dos columnas -->
+          <div class="form-button">
+            <button type="submit">Registrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

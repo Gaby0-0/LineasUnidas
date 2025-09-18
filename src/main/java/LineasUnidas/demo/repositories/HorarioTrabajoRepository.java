@@ -8,9 +8,10 @@ package LineasUnidas.demo.repositories;
  *
  * @author gabri
  */
-import LineasUnidas.demo.model.HorarioTrabajo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import LineasUnidas.demo.model.HorarioTrabajo;
 
 @Repository
 public interface HorarioTrabajoRepository extends JpaRepository<HorarioTrabajo, Integer> {}
