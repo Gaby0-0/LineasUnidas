@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Taquillero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e5e5e5;
+            margin: 0;
+            padding: 20 px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .btn-cerrar {
+            background: #ff6600;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #444;
+        }
+
+        section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0 4px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #e65c00;
+        }
+
+        .historial {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .historial th,
+        .historial td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .historial th {
+            background: #444;
+            color: white;
+        }
+
+        .precio {
+            color: green;
+            font-weight: bold;
+        }
+
+        .info-personal {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .info-personal .formulario {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .info-personal .imagen img {
+            max-width: 370px;
+            border-radius: 10px;
+        }
+
+        .boletos {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .boletos .reservarB {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .boletos .consultaCir {
+            max-width: 370px;
+            border-radius: 10px
+        }
+
+        .label-checkbox {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            font-style: italic;
+        }
+
+        .label-checkbox [type="checkbox"] {
+            
+            margin-right: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="imagenes_taquillero/encabezado.png" alt="Lineas Unidas">
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Comprar Boleto</a>
+            <a href="#">Acerca de Nosotros</a>
+            <a href="#">Contacto</a>
+            <a href="#" class="btn-cerrar">Cerrar</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Bienvenido Usuario Taquillero</h2>
+
+        <section class="info-personal">
+            <div class="formulario">
+                <h3>Información Personal</h3>
+                <label>Nombre</label>
+                <input type="text" value="Nombre bd">
+
+                <label>Correo Electrónico</label>
+                <input type="email" value="usuario@gmail.com">
+
+                <label>Número de Teléfono</label>
+                <input type="tel" value="951 189 00 67">
+
+                <label>Fecha de Nacimiento</label>
+                <input type="date">
+
+                <button class="btn">Editar Información</button>
+            </div>
+            <div class="imagen">
+                <img src="imagenes_taquillero/logo.png" alt="Camión" />
+
+            </div>
+        </section>
+
+
+        <section class="boletos">
+            <div class="reservarB">
+                <h3>Boleto para el Cliente</h3>
+                <label class="label-checkbox"><input type="checkbox"> Se aceptan los términos de cancelación</label>
+
+                <label>Origen</label>
+                <select id="origen">
+                    <option>Selecciona el lugar de origen del viaje</option>
+                    <option value="Oaxaca">CD. de Oaxaca</option>
+                    <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
+                </select>
+
+                <label>Destino</label>
+                <select id="destino">
+                    <option>Selecciona el destino</option>
+                    <option value="Oaxaca">CD. de Oaxaca</option>
+                    <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
+                </select>
+
+                <label>Fechas disponibles</label>
+                <input type="date">
+
+                <label>Horario disponible</label>
+                <select>
+                    <option>Selecciona horario</option>
+                </select>
+
+                <button class="btn" onclick="confirmarAccion('reservar')">Reservar</button>
+                <button class="btn green" onclick="confirmarAccion('vender')">Vender</button>
+            </div>
+            <div class="consultaCir">
+                <label>Viajes en circulación</label>
+                <button class="btn">Consultar</button>
+                <img src="imagenes_taquillero/urvan.png" alt="Urvan" width="370" style="opacity:0.5;" />
+
+            </div>
+
+        </section>
+
+        <section>
+            <h3>Historial de Boletos</h3>
+            <table class="historial" id="tablaHistorial">
+                <thead>
+                    <tr>
+                        <th>No. Boleto</th>
+                        <th>Actividad</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Fecha y Hora</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>23</td>
+                        <td>CD. de Oaxaca</td>
+                        <td>Miahuatlán de Porfirio Díaz</td>
+                        <td>20 de Agosto 18:00</td>
+                        <td><span class="precio">$800.00</span><br>Boleto Sencillo</td>
+                    </tr>
+                    <tr>
+                        <td>109</td>
+                        <td>Miahuatlán de Porfirio Díaz</td>
+                        <td>CD. de Oaxaca</td>
+                        <td>23 de Agosto 9:00</td>
+                        <td><span class="precio">$800.00</span><br>Boleto Sencillo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <p id="modalMensaje"></p>
+
+        </div>
+    </div>
+
+
+</body>
+<script src="taquillero.js"></script>
+
+</html>
