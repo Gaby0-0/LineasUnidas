@@ -1,37 +1,127 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Lineas Unidas</title>
-    <style>
-    
-        .menu {
-            text-align: right; 
-            margin-right: 200px;
-            margin-bottom: 20px; 
-        }
-
-        .menu a {
-            display: inline-block;
-            margin-left: 40px;
-            padding: 10px 15px;
-            color: rgb(11, 11, 11);
-            text-decoration: none;
-        }
-
-        h1 {
-            text-align: left;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Acerca de Nosotros – Líneas Unidas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('autobus_LN.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #333;
+    }
+    header {
+      background-color: #ffffff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #fffdfc;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    .nav-link {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: default;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.689); /* Transparencia para ver el fondo */
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #005599;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <div class="menu">
-        <a href="/">Inicio</a>
-        <a href="/boleto">Comprar boleto</a>
-        <a href="/nosotros">Acerca de Nosotros</a>
-        <a href="/contacto">Contacto</a>
-    </div>
 
-    <h1>Nosotros</h1>
+  <header style="display: flex; align-items: center; gap: 20px; background-color: #ffffff; padding: 10px;">
+    <img src="lineasunidasLOGO.png" alt="Logo Lineas Unidas" style="height: 60px;">
+    <div>
+      <h1 style="color: rgb(39, 39, 39); margin: 0;">Acerca de Nosotros</h1>
+    </div>
+  </header>
+  
+<header style="background-color: #f4f4f4; padding: 10px 20px;">
+  <div style="display: flex; justify-content: flex-end; align-items: center; gap: 30px;">
+    
+    <nav>
+      <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+        <li><a href="#" style="color: black; text-decoration: none;">Inicio</a></li>
+        <li><a href="#" style="color: black; text-decoration: none;">Nosotros</a></li>
+        <li><a href="#" style="color: black; text-decoration: none;">Servicios</a></li>
+        <li><a href="#" style="color: black; text-decoration: none;">Rutas</a></li>
+        <li><a href="#" style="color: black; text-decoration: none;">Contacto</a></li>
+      </ul>
+    </nav> 
+  </div>
+</header>
+
+  <main>
+    <section>
+      <h2>Filosofía</h2>
+      <p>En Líneas Unidas, creemos que cada viaje es una oportunidad para conectar, servir y proteger. Nuestra filosofía se basa en tres pilares: seguridad, servicio y conexión.</p>
+    </section>
+
+    <section>
+      <h2>Misión</h2>
+      <p>Conectar personas con sus destinos de forma segura, eficiente y confiable, brindando una experiencia de viaje que supere expectativas.</p>
+    </section>
+
+    <section>
+      <h2>Visión</h2>
+      <p>Ser la empresa líder en transporte de pasajeros en el sur de México, expandiendo nuestras rutas y creando nuevas oportunidades para nuestras comunidades.</p>
+    </section>
+
+    <section>
+      <h2>Valores</h2>
+      <ul>
+        <li><strong>Seguridad:</strong> Lo primero es proteger a nuestros pasajeros.</li>
+        <li><strong>Servicio:</strong> Atención cálida y personalizada.</li>
+        <li><strong>Innovación:</strong> Mejora continua en tecnología y procesos.</li>
+        <li><strong>Compromiso Social:</strong> Apoyo a grupos vulnerables y desarrollo comunitario.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Compromiso Social</h2>
+      <p>Donamos viajes a comunidades vulnerables, apoyamos eventos culturales y fomentamos el turismo responsable en Oaxaca.</p>
+    </section>
+
+    <section>
+      <h2>Contacto</h2>
+      <p><strong>Oficina Oaxaca:</strong> Av. Universidad 123, Oaxaca de Juárez, OAX. Tel: </p>
+      <p><strong>Oficina Miahuatlán:</strong> Calle Hidalgo 45, Miahuatlán de Porfirio Díaz, OAX. Tel: </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Líneas Unidas. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
+
