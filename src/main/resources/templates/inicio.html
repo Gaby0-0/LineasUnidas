@@ -22,13 +22,13 @@
             padding: 20px 50px;
         }
 
+        /* --- ENCABEZADO --- */
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: center; /* mejor usar center en lugar de left */
+            align-items: center;
             background-color: white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px 80px; /* 20px arriba/abajo, 40px izquierda/derecha */
         }
 
         .logo {
@@ -54,156 +54,49 @@
             text-transform: uppercase;
         }
 
-        /* --- SECCIÓN PRINCIPAL Y FORMULARIO --- */
+        /* --- SECCIÓN PRINCIPAL Y BIENVENIDA (MODIFICADA) --- */
         .hero-section {
-            background-image: url('imagenes/Urban1.png');
-            background-size: cover;
-            background-position: center;
-            height: 600px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
-            color: white;
-        }
-
-        .booking-form-container {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 30px;
-            border-radius: 10px;
-            width: 500px;
-            color: white;
-        }
-
-        .form-title {
-            color: white;
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .form-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .form-field {
-            flex: 1;
-            margin-right: 15px;
-        }
-
-        .form-field:last-child {
-            margin-right: 0;
-        }
-
-        .form-field label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .input-with-icon {
-            display: flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            padding: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .input-with-icon i {
-            color: white;
-            margin-right: 10px;
-        }
-
-        .input-with-icon input,
-        .input-with-icon select {
-            border: none;
-            outline: none;
-            background: transparent;
-            width: 100%;
-            color: white;
-        }
-
-        .input-with-icon input::placeholder,
-        .input-with-icon select {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            padding: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .quantity-control i {
-            color: white;
-            margin-right: 10px;
-        }
-
-        .quantity-control input {
-            width: 40px;
             text-align: center;
-            border: none;
-            background: transparent;
+            padding: 100px 50px;
+            background-color: #3a3b3c;
             color: white;
         }
 
-        .quantity-control input::-webkit-outer-spin-button,
-        .quantity-control input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+        .welcome-content {
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInWelcome 1.5s forwards;
+            animation-delay: 0.5s;
         }
 
-        .quantity-btn {
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            line-height: 1;
+        .welcome-content h1 {
+            font-size: 4em;
+            margin: 0 0 20px;
+            color: #ff9100;
         }
 
-        .form-buttons {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 20px;
+        .welcome-content p {
+            font-size: 1.5em;
+            line-height: 1.6;
         }
 
-        .button-primary {
-            background-color: #ff9100;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-right: 15px;
-            text-transform: uppercase;
-        }
-
-        .button-secondary {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 10px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
+        @keyframes fadeInWelcome {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* --- SECCIÓN DE "NUESTROS VIAJES" --- */
         .travel-section {
             background-color: white;
             text-align: center;
+            padding-top: 50px;
         }
 
         .travel-header {
@@ -491,137 +384,28 @@
             gap: 20px;
             justify-content: center;
         }
-
-        /* --- ESTILOS PARA LA LISTA DESPLEGABLE PERSONALIZADA --- */
-        .dropdown-container {
-            position: relative;
-        }
-
-        .dropdown-list {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            background-color: #555;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            max-height: 200px;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .dropdown-list.show {
-            display: block;
-        }
-
-        .dropdown-list li {
-            padding: 10px 15px;
-            cursor: pointer;
-            color: #ff9100;
-        }
-
-        .dropdown-list li:hover {
-            background-color: #777;
-        }
-
-        .dropdown-list li.hidden {
-            display: none;
-        }
     </style>
 </head>
 
 <body>
     <header class="header">
         <div class="logo-container">
-            <img src="/imagenes/logo.png" alt="Líneas Unidas Logo" class="logo" />
+            <img src="imagenes/logo.png" alt="Líneas Unidas Logo" class="logo" />
         </div>
         <nav class="navbar">
-            <a href="/" class="nav-item">Inicio</a>
-            <a href="/nosotros" class="nav-item">Acerca de Nosotros</a>
-            <a href="/contacto" class="nav-item">Contacto</a>
+            <a href="#" class="nav-item">Inicio</a>
+            <a href="#" class="nav-item">Comprar Boleto</a>
+            <a href="#" class="nav-item">Acerca de Nosotros</a>
+            <a href="#" class="nav-item">Contacto</a>
         </nav>
-        <button class="login-button" onclick="location.href='/login'">Login</button>
+        <button class="login-button">Iniciar</button>
     </header>
 
     <section class="hero-section">
-        <div class="booking-form-container">
-            <h1 class="form-title">Boleto de Viaje</h1>
-            <form class="booking-form">
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="origen">Origen</label>
-                        <div class="input-with-icon dropdown-container">
-                            <i class="fas fa-map-marker-alt dropdown-icon"></i>
-                            <input type="text" id="origen" placeholder="Ingresa tu origen" class="dropdown-input" />
-                            <ul class="dropdown-list">
-                                <li>Oaxaca de Juárez</li>
-                                <li>Miahuatlán de Porfirio Díaz</li>
-                                <li>San Pedro Pochutla</li>
-                                <li>Puerto Escondido</li>
-                                <li>Puerto Ángel</li>
-                                <li>San Jose del Pacífico</li>
-                                <li>Zipolite</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="destino">Destino</label>
-                        <div class="input-with-icon dropdown-container">
-                            <i class="fas fa-map-marker-alt dropdown-icon"></i>
-                            <input type="text" id="destino" placeholder="Ingresa tu destino" class="dropdown-input" />
-                            <ul class="dropdown-list">
-                                <li>Oaxaca de Juárez</li>
-                                <li>Miahuatlán de Porfirio Díaz</li>
-                                <li>San Pedro Pochutla</li>
-                                <li>Puerto Escondido</li>
-                                <li>Puerto Ángel</li>
-                                <li>San Jose del Pacífico</li>
-                                <li>Zipolite</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="fecha">Fecha</label>
-                        <div class="input-with-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                            <input type="date" id="fecha" />
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="boleto-type">Selecciona tipo de boleto</label>
-                        <div class="input-with-icon dropdown-container">
-                            <i class="fas fa-ticket-alt dropdown-icon"></i>
-                            <input type="text" id="boleto-type" placeholder="Selecciona tipo de boleto"
-                                class="dropdown-input" />
-                            <ul class="dropdown-list">
-                                <li>Sencillo</li>
-                                <li>Redondo</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row form-row-quantity">
-                    <div class="form-field">
-                        <label for="cantidad">Cantidad</label>
-                        <div class="quantity-control">
-                            <i class="fas fa-user-friends"></i>
-                            <button type="button" class="quantity-btn minus-btn">-</button>
-                            <input type="number" id="cantidad" value="0" />
-                            <button type="button" class="quantity-btn plus-btn">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-buttons">
-                    <button type="submit" class="button-primary">Reservar Boleto</button>
-                    <button type="button" class="button-secondary">Ver Circulación</button>
-                </div>
-            </form>
+        <div class="welcome-content">
+            <h1>¡Viaja con nosotros!</h1>
+            <h3>Tu viaje comienza con nosotros</h3>
+            <p>Conectamos los principales destinos del estado, ofreciéndote un servicio seguro y de confianza.</p>
         </div>
     </section>
 
@@ -656,14 +440,16 @@
             <div class="offer-item orange">
                 <div class="icon-container"><i class="fas fa-clock"></i></div>
                 <h4>Personal Capacitado</h4>
-                <p>Nuestros personal altamente capacitado, desde conductores hasta equipo de soporte, está comprometido con
+                <p>Nuestros personal altamente capacitado, desde conductores hasta equipo de soporte, está
+                    comprometido con
                     brindarte un servicio profesional y amable en cada trayecto.
                 </p>
             </div>
             <div class="offer-item">
                 <div class="icon-container"><i class="fas fa-user-shield"></i></div>
                 <h4>Viajes Seguros</h4>
-                <p>Todas nuestras unidades cuentan con seguro de viaje y están equipados con los más altos estándares de
+                <p>Todas nuestras unidades cuentan con seguro de viaje y están equipados con los más altos
+                    estándares de
                     seguridad mecánica para que viajes con confianza.
                 </p>
             </div>
@@ -703,7 +489,7 @@
     </section>
 
     <div class="footer-logo-container">
-        <img src="/imagenes/logo2.png" alt="Líneas Unidas SERPEVASS" />
+        <img src="imagenes/logo2.png" alt="Líneas Unidas SERPEVASS" />
     </div>
 
     <footer class="footer">
@@ -736,7 +522,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- DATOS DE LOS DESTINOS (UNA ÚNICA FUENTE) ---
             const travelDestinations = [
                 { name: 'Miahuatlán de Porfirio Díaz', image: 'imagenes/miahuatlan.jpg' },
                 { name: 'San Pedro Pochutla', image: 'imagenes/pochutla.jpg' },
@@ -746,12 +531,10 @@
                 { name: 'Puerto Escondido', image: 'imagenes/puertoescondido.png' },
             ];
 
-            // --- CÓDIGO PARA EL CARRUSEL DE VIAJES ---
             const carousel = document.getElementById('carousel');
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
 
-            // Genera las tarjetas para el carrusel (solo las primeras 4)
             const carouselItems = travelDestinations.slice(0, 4);
             carouselItems.forEach(destination => {
                 const card = document.createElement('div');
@@ -765,9 +548,8 @@
                 carousel.appendChild(card);
             });
 
-            // Lógica del carrusel con índice
             let currentIndex = 0;
-            const cardWidth = 300; // Ancho de la tarjeta en píxeles (incluyendo margen)
+            const cardWidth = 300;
 
             nextBtn.addEventListener('click', () => {
                 if (currentIndex < carouselItems.length - 1) {
@@ -783,13 +565,11 @@
                 }
             });
 
-            // --- CÓDIGO PARA EL MODAL "VER MÁS" ---
             const viewAllLink = document.getElementById('view-all-link');
             const modal = document.getElementById('modal');
             const closeModalBtn = document.querySelector('.close-btn');
             const allTravelCardsContainer = document.getElementById('all-travel-cards');
 
-            // Genera todas las tarjetas para el modal
             travelDestinations.forEach(destination => {
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -811,73 +591,10 @@
                 modal.style.display = 'none';
             });
 
-            // Oculta el modal si se hace clic fuera del contenido
             window.addEventListener('click', (event) => {
                 if (event.target == modal) {
                     modal.style.display = 'none';
                 }
-            });
-
-            // --- CÓDIGO PARA LOS MENÚS DESPLEGABLES ---
-            const dropdownContainers = document.querySelectorAll('.dropdown-container');
-
-            dropdownContainers.forEach(container => {
-                const input = container.querySelector('.dropdown-input');
-                const list = container.querySelector('.dropdown-list');
-
-                container.addEventListener('click', (event) => {
-                    if (event.target === input || event.target.classList.contains('dropdown-icon')) {
-                        list.classList.add('show');
-                    }
-                });
-
-                document.addEventListener('click', (event) => {
-                    if (!container.contains(event.target)) {
-                        list.classList.remove('show');
-                    }
-                });
-
-                input.addEventListener('input', () => {
-                    const filter = input.value.toLowerCase();
-                    const items = list.querySelectorAll('li');
-
-                    items.forEach(item => {
-                        const text = item.textContent.toLowerCase();
-                        if (text.includes(filter)) {
-                            item.classList.remove('hidden');
-                        } else {
-                            item.classList.add('hidden');
-                        }
-                    });
-
-                    list.classList.add('show');
-                });
-
-                list.addEventListener('click', (event) => {
-                    if (event.target.tagName === 'LI') {
-                        const selectedValue = event.target.textContent;
-                        input.value = selectedValue;
-                        list.classList.remove('show');
-                    }
-                });
-            });
-
-            // --- CÓDIGO PARA LOS BOTONES DE CANTIDAD DE BOLETOS ---
-            const quantityContainer = document.querySelector('.quantity-control');
-            const minusBtn = quantityContainer.querySelector('.minus-btn');
-            const plusBtn = quantityContainer.querySelector('.plus-btn');
-            const quantityInput = quantityContainer.querySelector('#cantidad');
-
-            minusBtn.addEventListener('click', () => {
-                let currentValue = parseInt(quantityInput.value);
-                if (currentValue > 0) {
-                    quantityInput.value = currentValue - 1;
-                }
-            });
-
-            plusBtn.addEventListener('click', () => {
-                let currentValue = parseInt(quantityInput.value);
-                quantityInput.value = currentValue + 1;
             });
         });
     </script>
