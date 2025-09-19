@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-</html>
-<html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +10,7 @@
             font-family: Arial, sans-serif;
             background: #e5e5e5;
             margin: 0;
-            padding: 20 px;
-            display: flex;
-            flex-direction: column;
+            padding: 0;
         }
 
         header {
@@ -38,18 +33,9 @@
             font-weight: bold;
         }
 
-        .btn-cerrar {
-            background: #ff6600;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
         main {
-            
             background: white;
-           
+            padding: 20px;
         }
 
         h2 {
@@ -78,21 +64,45 @@
             border-radius: 5px;
         }
 
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
+        .btn,
+        .btn-cerrar {
             background: #ff6600;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        .btn:hover {
-            background: #e65c00;
+
+        .btn:hover,
+        .btn-cerrar:hover {
+            background: #ff7f33;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
+ 
+        .btn:active,
+        .btn-cerrar:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .btn.green {
+            background: #28a745;
+        }
+
+        .btn.green:hover {
+            background: #34d058;
+        }
+
+     
         .historial {
             width: 100%;
             border-collapse: collapse;
@@ -152,6 +162,24 @@
         }
 
       
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -173,45 +201,34 @@
         <section class="info-personal">
             <div class="formulario">
                 <h3>Información Personal</h3>
-                <form th:action="@{/editar/{id}(id=${taquillero.idUsuario})}" method="post" th:object="${taquillero}">
-                    <label>Nombre</label>
-                    <input type="text" th:value="${taquillero.nombre}" name="nombre">
+                <label>Nombre</label>
+                <input type="text" value="Nombre" name="nombre">
 
-                    <label>Apellido Paterno</label>
-                    <input type="text" th:value="${taquillero.apellidoP}" name="apellido_p">
+                <label>Apellido Paterno</label>
+                <input type="text" value="Apellido Paterno" name="apellido_p">
 
-                    <label>Apellido Materno</label>
-                    <input type="text" th:value="${taquillero.apellidoM}" name="apellido_m">
+                <label>Apellido Materno</label>
+                <input type="text" value="Apellido Materno" name="apellido_m">
 
-                    <label>Correo Electrónico</label>
-                    <input type="email" th:value="${taquillero.correo}" name="correo">
+                <label>Correo Electrónico</label>
+                <input type="email" name="correo">
 
-                    <label>Número de Teléfono</label>
-                    <input type="tel" th:value="${taquillero.telefono}" name="telefono">
-                    <div>
-                        <button type="submit" class="btn">Guardar Cambios</button>
-
-                    </div>
-
-                    
-                </form>
+                <label>Número de Teléfono</label>
+                <input type="tel" name="telefono">
+                <div>
+                    <button type="submit" class="btn">Guardar Cambios</button>
+                </div>
             </div>
             <div class="imagen">
-                <img src="/logo.png" alt="Camión" />
-
+                <img src="/logo.png" alt="Camión"  />
             </div>
         </section>
-
 
         <section class="boletos">
             <div class="reservarB">
                 <h3>Boleto para el Cliente</h3>
-                <div>
-                     <label class="label-checkbox"><input type="checkbox"> Se aceptan los términos de cancelación</label>
+                <label class="label-checkbox"><input type="checkbox"> Se aceptan los términos de cancelación</label>
 
-
-                </div>
-               
                 <label>Origen</label>
                 <select id="origen">
                     <option>Selecciona el lugar de origen del viaje</option>
@@ -235,20 +252,14 @@
                 </select>
                 <div>
                     <button class="btn" onclick="confirmarAccion('reservar')">Reservar</button>
-                <button class="btn green" onclick="confirmarAccion('vender')">Vender</button>
-        
-
+                    <button class="btn green" onclick="confirmarAccion('vender')">Vender</button>
                 </div>
-
-                
             </div>
             <div class="consultaCir">
                 <label>Viajes en circulación</label>
                 <button class="btn">Consultar</button>
                 <img src="/urvan.png" alt="Urvan" width="370" style="opacity:0.5;" />
-
             </div>
-
         </section>
 
         <section>
@@ -287,12 +298,8 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <p id="modalMensaje"></p>
-
         </div>
     </div>
-
-
 </body>
-<script src="taquillero.js"></script>
 
 </html>

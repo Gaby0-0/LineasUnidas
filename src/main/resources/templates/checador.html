@@ -1,275 +1,334 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Cuenta Checador</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #e5e5e5;
-        }
+    <head>
+        <meta charset="UTF-8">
+            <title>Cuenta Checador</title>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
 
-        main {
-            min-height: 100%;
-            background-color: #e5e5e5;
-        }
+                body {
+                    font-family: Arial, sans-serif;
+                    background: #e5e5e5;
+                }
 
-        header {
-            background: #fff;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #ddd;
-        }
+                main {
+                    min-height: 100vh;
+                    background: white;
+                    padding: 20px 40px;
+                }
 
-        header img {
-            height: 50px;
-        }
+                header {
+                    background: #fff;
+                    padding: 15px 40px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 2px solid #ddd;
+                }
 
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
+                header img {
+                    height: 50px;
+                }
 
-        .btn-cerrar {
-            background: #ff6600;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
+                nav a {
+                    margin: 0 15px;
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: bold;
+                    transition: color 0.3s ease;
+                }
 
-        main {
-            max-width: 1100px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
+                nav a:hover {
+                    color: #ff6600;
+                }
 
-        h2 {
-            margin-top: 0;
-            color: #444;
-        }
+                .btn-cerrar {
+                    background: #ff6600;
+                    color: white;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    transition: background 0.3s ease, transform 0.2s ease;
+                }
+
+                .btn-cerrar:hover {
+                    background: #e65c00;
+                    transform: translateY(-2px);
+                }
+
+                h2 {
+                    margin-bottom: 20px;
+                    color: #444;
+                }
+
+                section {
+                    margin-bottom: 30px;
+                    padding: 20px;
+                    border-radius: 10px;
+                    background: #f9f9f9;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+
+                label {
+                    display: block;
+                    margin: 8px 0 4px;
+                    font-weight: bold;
+                }
+
+                input,
+                select {
+                    width: 30%;
+                    padding: 8px;
+                    border: 1px solid #bbb;
+                    border-radius: 5px;
+                    transition: border-color 0.3s ease;
+                }
+
+                input:focus,
+                select:focus {
+                    border-color: #ff6600;
+                    outline: none;
+                }
+
+                .btn,
+                .btn-cerrar {
+                    background: #ff6600;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                }
+
+                .btn:hover,
+                .btn-cerrar:hover {
+                    background: #ff7f33;
+                    color: white;
+                    transform: scale(1.1);
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+                }
+
+                .btn:active,
+                .btn-cerrar:active {
+                    transform: scale(0.95);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                }
+
+                .historial {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 15px;
+                }
+
+                .historial th,
+                .historial td {
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                    text-align: center;
+                }
+
+                .historial th {
+                    background: #444;
+                    color: white;
+                }
+
+                .precio {
+                    color: green;
+                    font-weight: bold;
+                }
+
+                .info-personal {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                }
+
+                .info-personal .formulario {
+                    flex: 1;
+                    margin-right: 20px;
+                }
+
+                .info-personal .imagen img {
+                    max-width: 370px;
+                    border-radius: 10px;
+                }
+
+                .registroU,
+                .boletos {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                }
+
+                .registroU .registro,
+                .boletos .reservarB {
+                    flex: 1;
+                    margin-right: 20px;
+                }
+
+                .label-checkbox {
+                    display: flex;
+                    align-items: center;
+                    font-style: italic;
+                    margin-top: 10px;
+                }
+
+                .label-checkbox [type="checkbox"] {
+                    margin-right: 8px;
+                }
 
 
-
-        label {
-            display: block;
-            margin: 8px 0 4px;
-            font-weight: bold;
-        }
-
-        input,
-        select {
-            width: 30%;
-            padding: 8px;
-            border: 1px solid #bbb;
-            border-radius: 5px;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            background: #ff6600;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #e65c00;
-        }
-
-        .historial {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .historial th,
-        .historial td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .precio {
-            color: green;
-            font-weight: bold;
-        }
-
-        .info-personal {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .info-personal .formulario {
-            flex: 1;
-            margin-right: 20px;
-        }
-
-        .info-personal .imagen img {
-            max-width: 370px;
-            border-radius: 10px;
-        }
-
-        .boletos {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .boletos .reservarB {
-            flex: 1;
-            margin-right: 20px;
-        }
+                input:hover,
+                select:hover {
+                    border-color: #ff6600;
+                }
 
 
+                .btn-secondary {
+                    background: #444;
+                }
 
-        .label-checkbox {
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            font-style: italic;
-        }
+                .btn-secondary:hover {
+                    background: #333;
+                }
+            </style>
+    </head>
 
-        .label-checkbox [type="checkbox"] {
+    <body>
 
-            margin-right: 1px;
-        }
-    </style>
-</head>
+        <header>
+            <img src="encabezado.png" alt="Lineas Unidas">
+                <nav>
+                    <a href="/inicio">Inicio</a>
+                    <a href="/boleto">Comprar Boleto</a>
+                    <a href="/nosostros">Acerca de Nosotros</a>
+                    <a href="/contacto">Contacto</a>
+                    <a href="/login" class="btn-cerrar">Cerrar</a>
+                </nav>
+        </header>
 
-<body>
-    <header>
-        <img src="encabezado.png" alt="Lineas Unidas">
-        <nav>
-            <a href="/inicio">Inicio</a>
-            <a href="/boleto">Comprar Boleto</a>
-            <a href="/nosostros">Acerca de Nosotros</a>
-            <a href="/contacto">Contacto</a>
-            <a href="/login" class="btn-cerrar">Cerrar</a>
-        </nav>
-    </header>
 
-    <main>
-        <h2>Bienvenido Usuario Checador</h2>
+        <main>
+            <h2>Bienvenido Usuario Checador</h2>
 
-        <section class="info-personal">
-            <div class="formulario">
-                <h3>Información Personal</h3>
-               <form th:action="@{/editar/{id}(id=${checador.idUsuario})}" method="post" th:object="${checador}">
+
+            <section class="info-personal">
+                <div class="formulario">
+                    <h3>Información Personal</h3>
+
                     <label>Nombre</label>
-                    <input type="text" th:value="${checador.nombre}" name="nombre">
+                    <input type="text" value="Nombre" name="nombre">
 
-                    <label>Apellido Paterno</label>
-                    <input type="text" th:value="${checador.apellidoP}" name="apellido_p">
+                        <label>Apellido Paterno</label>
+                        <input type="text" value="Apellido Paterno" name="apellido_p">
 
-                    <label>Apellido Materno</label>
-                    <input type="text" th:value="${checador.apellidoM}" name="apellido_m">
+                            <label>Apellido Materno</label>
+                            <input type="text" value="Apellido Materno" name="apellido_m">
 
-                    <label>Correo Electrónico</label>
-                    <input type="email" th:value="${checador.correo}" name="correo">
+                                <label>Correo Electrónico</label>
+                                <input type="email" name="correo">
 
-                    <label>Número de Teléfono</label>
-                    <input type="tel" th:value="${checador.telefono}" name="telefono">
-
-                    <button type="submit" class="btn">Guardar Cambios</button>
-                </form>
-            </div>
-            <div class="imagen">
-                <img src="/src/main/resources/static/logo.png" alt="Camión" />
-
-            </div>
-        </section>
+                                    <label>Número de Teléfono</label>
+                                    <input type="tel" name="telefono">
+                                        <div>
+                                            <button type="submit" class="btn">Guardar Cambios</button>
+                                        </div>
 
 
-        <section class="registroU">
-            <div class="registro">
-                <h3>Registrar Actividad de Unidad</h3>
+                                        </div>
 
-                <label>Identificador de la Unidad</label>
-                <select id="unidad">
-                    <option>Selecciona la unidad</option>
-                    <option value="1">Unidad 1</option>
-                    <option value="23">Unidad 2</option>
-                </select>
-
-                <label>Número de pasajeros</label>
-                <input type="number">
-
-                <label>Disponibilidad</label>
-                <input type="number">
-
-                <label>Origen</label>
-                <select id="destino">
-                    <option>Selecciona el lugar de origen</option>
-                    <option value="Oaxaca">CD. de Oaxaca</option>
-                    <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
-                </select>
-                <label>Destino</label>
-                <select id="destino">
-                    <option>Selecciona el destino</option>
-                    <option value="Oaxaca">CD. de Oaxaca</option>
-                    <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
-                </select>
-
-                <label>Fecha</label>
-                <input type="date">
-
-                <label>Hora</label>
-                <select>
-                    <option>Selecciona horario</option>
-                </select>
+                                        <div class="imagen">
+                                            <img src="/logo.png" alt="Camión" />
+                                        </div>
+                                        </section>
 
 
-                <p> <button class="btn">Confirmar</button></p>
+                                        <section class="registroU">
+                                            <div class="registro">
+                                                <h3>Registrar Actividad de Unidad</h3>
 
-            </div>
-            <div style="text-align: right;">
-                <button class="btn">Viajes en Circulación</button>
+                                                <label>Identificador de la Unidad</label>
+                                                <select id="unidad">
+                                                    <option>Selecciona la unidad</option>
+                                                    <option value="1">Unidad 1</option>
+                                                    <option value="2">Unidad 2</option>
+                                                </select>
 
-            </div>
+                                                <label>Número de pasajeros</label>
+                                                <input type="number">
 
-        </section>
+                                                    <label>Disponibilidad</label>
+                                                    <input type="number">
 
-        <section>
-            <h3>Registrar Unidad en un Punto de Control</h3>
-            <label>Identificador de la Unidad</label>
-            <select id="unidad">
-                <option>Selecciona el lugar de origen del viaje</option>
-                <option value="Oaxaca">CD. de Oaxaca</option>
-                <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
-            </select>
+                                                        <label>Origen</label>
+                                                        <select id="origen">
+                                                            <option>Selecciona el lugar de origen</option>
+                                                            <option value="Oaxaca">CD. de Oaxaca</option>
+                                                            <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
+                                                        </select>
 
-            <label>Número de pasajeros</label>
-            <input type="number">
+                                                        <label>Destino</label>
+                                                        <select id="destino">
+                                                            <option>Selecciona el destino</option>
+                                                            <option value="Oaxaca">CD. de Oaxaca</option>
+                                                            <option value="Miahuatlán">Miahuatlán de Porfirio Díaz</option>
+                                                        </select>
 
-            <label>Disponibilidad</label>
-            <input type="number">
+                                                        <label>Fecha</label>
+                                                        <input type="date">
 
-            <label>Fecha</label>
-            <input type="date">
+                                                            <label>Hora</label>
+                                                            <select>
+                                                                <option>Selecciona horario</option>
+                                                            </select>
+                                                            <div>
+                                                                <button class="btn">Confirmar</button>
 
-            <label>Hora</label>
-            <input type="time">
-            <p> <button class="btn">Confirmar</button></p>
-        </section>
-
-
-    </main>
+                                                            </div>
 
 
+                                                            </div>
 
-</body>
-<!--<script src=".js"></script>-->
+                                                            <div style="text-align: right;">
+                                                                <button class="btn btn-secondary">Viajes en Circulación</button>
+                                                            </div>
+                                                            </section>
 
-</html>
+                                                            <section>
+                                                                <h3>Registrar Unidad en un Punto de Control</h3>
+
+                                                                <label>Identificador de la Unidad</label>
+                                                                <select id="unidad">
+                                                                    <option>Selecciona la unidad</option>
+                                                                    <option value="1">Unidad 1</option>
+                                                                    <option value="2">Unidad 2</option>
+                                                                </select>
+
+                                                                <label>Número de pasajeros</label>
+                                                                <input type="number">
+
+                                                                    <label>Disponibilidad</label>
+                                                                    <input type="number">
+
+                                                                        <label>Fecha</label>
+                                                                        <input type="date">
+
+                                                                            <label>Hora</label>
+                                                                            <input type="time">
+                                                                                <div>
+                                                                                    <button class="btn">Confirmar</button>
+                                                                                </div>
+
+                                                                                </section>
+                                                                                </main>
+                                                                                </body>
+
+                                                                                </html>

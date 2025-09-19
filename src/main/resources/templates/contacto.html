@@ -32,19 +32,7 @@
             font-weight: bold;
         }
 
-        .btn {
-            background: #ff6600;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #e65c00;
-        }
+       
 
         section {
             margin-bottom: 25px;
@@ -117,6 +105,33 @@
             text-align: center;
             margin: 20px 0;
         }
+       
+        .btn,
+        .btn-iniciar {
+            background: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover,
+        .btn-iniciar:hover {
+            background: #ff7f33;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn:active,
+        .btn-iniciar:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
 
         
     </style>
@@ -129,7 +144,7 @@
             <a href="/inicio">Inicio</a>
             <a href="/nosostros">Nosotros</a>
             <a href="/contacto">Contacto</a>
-            <a href="/login" class="btn-cerrar">Login</a>
+            <a href="/login" class="btn-iniciar">Iniciar</a>
         </nav>
     </header>
 
@@ -150,7 +165,11 @@
                 <input type="email" placeholder="Ingresa tu correo">
                 <label >Comentarios</label>
                 <textarea placeholder="Déjanos saber tu opinión..."></textarea>
-                <button type="submit" class="btn">Enviar</button>
+                <div>
+                    <button type="submit" class="btn">Enviar</button>
+
+                </div>
+                
             </form>
         </div>
     </section>
