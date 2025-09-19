@@ -4,6 +4,8 @@
  */
 package LineasUnidas.demo.model;
 
+import jakarta.persistence.Column;
+
 /**
  *
  * @author magal
@@ -17,6 +19,8 @@ import jakarta.persistence.Table;
 @Table(name = "gerente")
 public class Gerente extends Usuario {
 
+    @Column(name = "contrasenia", nullable = false)
+    private String contrasenia;
     
     public Gerente() {}
 

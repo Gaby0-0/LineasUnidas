@@ -13,7 +13,6 @@ public class TaquilleroService {
 
     private final TaquilleroRepository taquilleroRepo;
 
-
     public TaquilleroService(TaquilleroRepository taquilleroRepo) {
         this.taquilleroRepo = taquilleroRepo;
     }
@@ -31,8 +30,8 @@ public class TaquilleroService {
         return taquilleroRepo.findAll();
     }
 
-    public Taquillero actualizarTaquillero(int id, Taquillero detalles) {
-        Optional<Taquillero> optTaquillero = taquilleroRepo.findById(id);
+    public Taquillero actualizarTaquillero(Taquillero detalles) {
+        Optional<Taquillero> optTaquillero = taquilleroRepo.findById(detalles.getIdUsuario());
         if (optTaquillero.isPresent()) {
             Taquillero taquillero = optTaquillero.get();
             taquillero.setNombre(detalles.getNombre());
@@ -41,7 +40,6 @@ public class TaquilleroService {
             taquillero.setTelefono(detalles.getTelefono());
             taquillero.setCorreo(detalles.getCorreo());
             taquillero.setRol(detalles.getRol());
-            taquillero.setIdUsuario(detalles.getIdUsuario());
             taquillero.setHorario(detalles.getHorario());
             taquillero.setBoletos(detalles.getBoletos());
             taquillero.setContrasenia(detalles.getContrasenia());

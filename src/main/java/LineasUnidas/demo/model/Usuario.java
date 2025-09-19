@@ -39,7 +39,7 @@ public abstract class Usuario {
     
     @Column(unique = true) 
     protected String correo;
-
+    
     protected String rol;
 
     public Usuario() {}

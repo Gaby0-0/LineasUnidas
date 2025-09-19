@@ -31,8 +31,8 @@ public class ChecadorService {
         return checadorRepo.findAll();
     }
 
-    public Checador actualizarChecador(int id, Checador detalles) {
-        Optional<Checador> optChecador = checadorRepo.findById(id);
+    public Checador actualizarChecador( Checador detalles) {
+        Optional<Checador> optChecador = checadorRepo.findById(detalles.getIdUsuario());
         if (optChecador.isPresent()) {
             Checador checador = optChecador.get();
             checador.setNombre(detalles.getNombre());

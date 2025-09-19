@@ -47,12 +47,9 @@
         }
 
         main {
-            max-width: 1100px;
-            margin: 20px auto;
+            
             background: white;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+           
         }
 
         h2 {
@@ -75,7 +72,7 @@
 
         input,
         select {
-            width: 100%;
+            width: 30%;
             padding: 8px;
             border: 1px solid #bbb;
             border-radius: 5px;
@@ -151,22 +148,16 @@
         }
 
         .label-checkbox {
-            display: flex;
-            justify-content: left;
-            align-items: center;
             font-style: italic;
         }
 
-        .label-checkbox [type="checkbox"] {
-
-            margin-right: 1px;
-        }
+      
     </style>
 </head>
 
 <body>
     <header>
-        <img src="encabezado.png" alt="Lineas Unidas">
+        <img src="/encabezado.png" alt="Lineas Unidas">
         <nav>
             <a href="/inicio">Inicio</a>
             <a href="/boleto">Comprar Boleto</a>
@@ -182,19 +173,28 @@
         <section class="info-personal">
             <div class="formulario">
                 <h3>Información Personal</h3>
-                <label>Nombre</label>
-                <input type="text" value="Nombre bd">
+                <form th:action="@{/editar/{id}(id=${taquillero.idUsuario})}" method="post" th:object="${taquillero}">
+                    <label>Nombre</label>
+                    <input type="text" th:value="${taquillero.nombre}" name="nombre">
 
-                <label>Correo Electrónico</label>
-                <input type="email" value="usuario@gmail.com">
+                    <label>Apellido Paterno</label>
+                    <input type="text" th:value="${taquillero.apellidoP}" name="apellido_p">
 
-                <label>Número de Teléfono</label>
-                <input type="tel" value="951 189 00 67">
+                    <label>Apellido Materno</label>
+                    <input type="text" th:value="${taquillero.apellidoM}" name="apellido_m">
 
-                <label>Fecha de Nacimiento</label>
-                <input type="date">
+                    <label>Correo Electrónico</label>
+                    <input type="email" th:value="${taquillero.correo}" name="correo">
 
-                <button class="btn">Editar Información</button>
+                    <label>Número de Teléfono</label>
+                    <input type="tel" th:value="${taquillero.telefono}" name="telefono">
+                    <div>
+                        <button type="submit" class="btn">Guardar Cambios</button>
+
+                    </div>
+
+                    
+                </form>
             </div>
             <div class="imagen">
                 <img src="/logo.png" alt="Camión" />
@@ -206,8 +206,12 @@
         <section class="boletos">
             <div class="reservarB">
                 <h3>Boleto para el Cliente</h3>
-                <label class="label-checkbox"><input type="checkbox"> Se aceptan los términos de cancelación</label>
+                <div>
+                     <label class="label-checkbox"><input type="checkbox"> Se aceptan los términos de cancelación</label>
 
+
+                </div>
+               
                 <label>Origen</label>
                 <select id="origen">
                     <option>Selecciona el lugar de origen del viaje</option>
@@ -229,9 +233,14 @@
                 <select>
                     <option>Selecciona horario</option>
                 </select>
-
-                <button class="btn" onclick="confirmarAccion('reservar')">Reservar</button>
+                <div>
+                    <button class="btn" onclick="confirmarAccion('reservar')">Reservar</button>
                 <button class="btn green" onclick="confirmarAccion('vender')">Vender</button>
+        
+
+                </div>
+
+                
             </div>
             <div class="consultaCir">
                 <label>Viajes en circulación</label>

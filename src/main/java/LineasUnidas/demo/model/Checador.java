@@ -4,6 +4,8 @@
  */
 package LineasUnidas.demo.model;
 
+import jakarta.persistence.Column;
+
 /**
  *
  * @author magal
@@ -22,6 +24,9 @@ public class Checador extends Usuario {
     @ManyToOne
     @JoinColumn(name = "id_horario")
     private HorarioTrabajo horario;
+    
+    @Column(name = "contrasenia", nullable = false)
+    private String contrasenia;
 
     public Checador() {}
 

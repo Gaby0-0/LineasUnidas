@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             background: #e5e5e5;
             margin: 0;
-            padding: 20 px;
+            padding: 20px;
         }
 
         header {
@@ -32,23 +32,37 @@
             font-weight: bold;
         }
 
-        .btn{
-             background: #ff6600;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
+        .btn {
+            background: #ff6600;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
         }
 
-        .comentarios {
-            background: #fff;
+        .btn:hover {
+            background: #e65c00;
         }
 
         section {
             margin-bottom: 25px;
-            padding: 15px;
+            padding: 20px;
             border: 1px solid #ddd;
             border-radius: 10px;
+            background: #fff;
+        }
+
+        .comentarios h1 {
+            margin-top: 0;
+            color: #444;
+        }
+
+        .formu h3 {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
         }
 
         label {
@@ -57,21 +71,60 @@
             font-weight: bold;
         }
 
-        input {
-            width: 23%;
-            padding: 8px;
+        input,
+        textarea {
+            width: 30%;
+            padding: 10px;
             border: 1px solid #bbb;
             border-radius: 5px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            font-size: 14px;
         }
-        .direc{
+
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .direc {
             background: #ff6600;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
+
+        .direccion {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .direccion p {
+            margin: 6px 0;
+        }
+
+        .direccion h4 {
+            margin-bottom: 10px;
+        }
+
+        .log {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        
     </style>
 </head>
 
 <body>
     <header>
-        <img src="/src/main/resources/static/encabezado.png" alt="Lineas Unidas">
+        <img src="encabezado.png" alt="Lineas Unidas">
         <nav>
             <a href="/inicio">Inicio</a>
             <a href="/nosostros">Nosotros</a>
@@ -79,42 +132,43 @@
             <a href="/login" class="btn-cerrar">Login</a>
         </nav>
     </header>
+
     <div class="log">
         <img src="logo.png" alt="Camión" />
-
     </div>
-    
-        <section class="comentarios">
-            <h1>Contacto</h1>
-            <div class="formu">
-                <h3><em>Estamos atentos a tus comentarios</em></h3>
+
+    <section class="comentarios">
+        <h1>Contacto</h1>
+        <div class="formu">
+            <h3>Estamos atentos a tus comentarios</h3>
+            <form>
                 <label>Nombre</label>
                 <input type="text" placeholder="Ingresa tu nombre">
-                <label>Aepellidos</label>
+                <label>Apellidos</label>
                 <input type="text" placeholder="Ingresa tus apellidos">
                 <label>Correo Electrónico</label>
-                <input type="email" name="" id="">
-                <label>Comentarios</label>
-                <input type="text" placeholder="Dejanos saber tu opinión...">
+                <input type="email" placeholder="Ingresa tu correo">
+                <label >Comentarios</label>
+                <textarea placeholder="Déjanos saber tu opinión..."></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </div>
+    </section>
 
-               <p><button class="btn">Enviar</button></p>
-            </div>
-        </section>
-        <section class="direc">
-            <p>CENTRAL CD. OAXACA</p>
-            <p>Tel. +52 951 572 15 31</p>
-            <p>951 187 5512</p>
-            <p>Calle 5 De Febrero #203 Col. Centro C.P 70805 Miahuatlán De Porfirio Díaz Oax.</p>
-            <p>   </p>
-            <p>   </p>
-            <p>CENTRAL MIAHUATLÁN</p>
-            <P>Tel. +52 951 516 2472 </P>
-            <p>951 187 5511</p>
-            <p>Calle Bustamante esquina con Xóchilt #601 Centro, C.P. 68000 Oaxaca de Juárez Oaxaca.</p>
-
-        </section>
-
-
+    <section class="direc">
+        <div class="direccion">
+            <h4>CENTRAL CD. OAXACA</h4>
+            <p>Tel. +52 951 572 1531</p>
+            <p>Tel. 951 187 5512</p>
+            <p>Calle 5 De Febrero #203, Col. Centro, C.P. 70805, Miahuatlán De Porfirio Díaz, Oax.</p>
+        </div>
+        <div class="direccion">
+            <h4>CENTRAL MIAHUATLÁN</h4>
+            <p>Tel. +52 951 516 2472</p>
+            <p>Tel. 951 187 5511</p>
+            <p>Calle Bustamante esquina con Xóchilt #601, Centro, C.P. 68000, Oaxaca de Juárez, Oaxaca.</p>
+        </div>
+    </section>
 
 </body>
 
