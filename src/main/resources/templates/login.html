@@ -182,27 +182,32 @@
   <div class="contenedor-login">
     <div class="caja-login">
       <h2>Iniciar Sesión</h2>
-      <form class="formulario-login">
-        <div class="grupo-campo">
-          <label for="usuario">Usuario</label>
-          <input type="text" id="usuario" placeholder="Correo electrónico" required>
-        </div>
+          <form class="formulario-login" th:action="@{/login}" method="post">
+            <div class="grupo-campo">
+              <label for="correo">Usuario</label>
+              <input type="text" id="correo" name="correo" placeholder="Correo electrónico" required>
+            </div>
 
-        <div class="grupo-campo">
-          <label for="contrasena">Contraseña</label>
-          <input type="password" id="contrasena" placeholder="Contraseña" required>
-        </div>
+            <div class="grupo-campo">
+              <label for="contrasena">Contraseña</label>
+              <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+            </div>
 
-        <div class="enlaces-extra">
-          <a href="recuperar.html">Recuperar contraseña</a>
-        </div>
+            <div class="enlaces-extra">
+              <a href="recuperar.html">Recuperar contraseña</a>
+            </div>
 
-        <button type="button" class="boton" onclick="window.location.href='/inicio-gerente'">Iniciar</button>
+            <button type="submit" class="boton">Iniciar</button>
 
-        <div class="crear-cuenta">
-          <a href="/registro-cliente">Crear Cuenta</a>
-        </div>
-      </form>
+            <div class="crear-cuenta">
+              <a href="/registro-cliente">Crear Cuenta</a>
+            </div>
+
+            <div th:if="${error}" class="error">
+              <p th:text="${error}"></p>
+            </div>
+          </form>
+
     </div>
   </div>
 

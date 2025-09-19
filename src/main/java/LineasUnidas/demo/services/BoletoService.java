@@ -1,19 +1,17 @@
 package LineasUnidas.demo.services;
 
-import LineasUnidas.demo.model.Boleto;
-import LineasUnidas.demo.repositories.BoletoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import LineasUnidas.demo.model.Boleto;
+import LineasUnidas.demo.repositories.BoletoRepository;
 
 @Service
 public class BoletoService {
 
     private final BoletoRepository boletoRepo;
-
-    @Autowired
     public BoletoService(BoletoRepository boletoRepo) {
         this.boletoRepo = boletoRepo;
     }

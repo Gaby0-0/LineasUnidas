@@ -10,4 +10,9 @@ public class InicioGerenteController {
     public String gerente() {
         return "inicio-gerente"; 
     }
+
+
+
+
+    
 }

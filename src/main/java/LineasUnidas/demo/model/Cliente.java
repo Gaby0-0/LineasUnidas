@@ -31,6 +31,7 @@ public class Cliente extends Usuario {
 
     public Cliente() {
         super();
+        setRol("Cliente");
     }
 
     public Cliente( String nombre, String apellidoP, String apellidoM, String telefono, String correo, String metodoCompra) {

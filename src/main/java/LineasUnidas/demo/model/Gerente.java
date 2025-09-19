@@ -23,7 +23,6 @@ public class Gerente extends Usuario {
     private String contrasenia;
     
     public Gerente() {}
-
     public Gerente( String nombre, String apellidoP, String apellidoM, String telefono, String correo) {
         super( nombre, apellidoP, apellidoM, telefono, correo, "Gerente");
        

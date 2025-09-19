@@ -1,12 +1,12 @@
 package LineasUnidas.demo.services;
 
-import LineasUnidas.demo.model.Taquillero;
-import LineasUnidas.demo.repositories.TaquilleroRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import LineasUnidas.demo.model.Taquillero;
+import LineasUnidas.demo.repositories.TaquilleroRepository;
 
 @Service
 public class TaquilleroService {
@@ -60,4 +60,8 @@ public class TaquilleroService {
         return taquilleroRepo.findByCorreo(correo);
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }

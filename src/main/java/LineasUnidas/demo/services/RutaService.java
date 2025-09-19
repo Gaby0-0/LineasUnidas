@@ -1,12 +1,12 @@
 package LineasUnidas.demo.services;
 
-import LineasUnidas.demo.model.Ruta;
-import LineasUnidas.demo.repositories.RutaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import LineasUnidas.demo.model.Ruta;
+import LineasUnidas.demo.repositories.RutaRepository;
 
 @Service
 public class RutaService {
