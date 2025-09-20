@@ -14,11 +14,14 @@ import LineasUnidas.demo.model.Conductor;
 import LineasUnidas.demo.model.Gerente;
 import LineasUnidas.demo.model.HorarioTrabajo;
 import LineasUnidas.demo.model.Taquillero;
+import LineasUnidas.demo.model.Usuario;
 import LineasUnidas.demo.services.ChecadorService;
 import LineasUnidas.demo.services.ConductorService;
 import LineasUnidas.demo.services.GerenteService;
 import LineasUnidas.demo.services.HorarioTrabajoService;
 import LineasUnidas.demo.services.TaquilleroService;
+import LineasUnidas.demo.services.UsuarioService;
+
 @Controller
 public class EmpleadoController {
 private final TaquilleroService taquilleroService;
@@ -26,16 +29,19 @@ private final HorarioTrabajoService horarioTrabajoService;
 private final ConductorService conductorService;
 private final GerenteService gerenteService;
 private final  ChecadorService checadorService;
+private final  UsuarioService usuarioService;
     public EmpleadoController(TaquilleroService taquilleroService, 
     HorarioTrabajoService horarioTrabajoService,
     ConductorService conductorService,
     GerenteService gerenteService,
-    ChecadorService checadorService) {
+    ChecadorService checadorService,
+    UsuarioService usuarioService) {
         this.taquilleroService = taquilleroService;
         this.horarioTrabajoService = horarioTrabajoService;
         this.conductorService = conductorService;
         this.gerenteService = gerenteService;
         this.checadorService = checadorService;
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/empleados")
@@ -70,7 +76,7 @@ public String registrarEmpleado(
     if(rol.equalsIgnoreCase("taquillero")){
         Taquillero taqui = new Taquillero(nombre, apellidoP, apellidoM, telefono, correo, rol,horarioTrabajo, contrasenia);
         taquilleroService.crearTaquillero(taqui);
-         System.out.println("mensajeRegistro exitoso!");
+         System.out.println("Registro exitoso!");
     }else if(rol.equalsIgnoreCase("conductor")){
         Conductor conductor = new Conductor(nombre, apellidoP, apellidoM, telefono, correo,horarioTrabajo, permiso);
         conductorService.crearConductor(conductor);
@@ -86,4 +92,6 @@ public String registrarEmpleado(
 } 
      return "redirect:/empleados";
 }
+
+
 }

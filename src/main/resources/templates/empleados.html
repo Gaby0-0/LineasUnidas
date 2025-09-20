@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (rol === 'Conductor') {
             permisoGroup.style.display = 'block';
             contraseniaGroup.style.display = 'none';
-        } else if (rol === 'Gaquillero'| rol === 'Checador'| rol === 'Gerente'){
+        } else if (rol === 'Taquillero'| rol === 'Checador'| rol === 'Gerente'){
              permisoGroup.style.display = 'none';
             contraseniaGroup.style.display = 'block';
         } else {
@@ -530,10 +530,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const permisoGroup = document.getElementById('permisoGroup');
             const contraseniaGroup = document.getElementById('contraseniaGroup');
 
-                if (rol === 'Conductor') {
+                if (rol === 'conductor') {
                     permisoGroup.style.display = 'block';
                     contraseniaGroup.style.display = 'none';
-                } else if (rol === 'Taquillero'| rol === 'Checador'| rol === 'Gerente'){
+                } else if (rol === 'taquillero'| rol === 'checador'| rol === 'gerente'){
                     permisoGroup.style.display = 'none';
                     contraseniaGroup.style.display = 'block';
                 } else {
@@ -542,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
         }
 
-        function toggleEditRoleFields() {
+        function toggleEditRoleFields() { 
             const rol = document.getElementById('edit_rol').value;
             // Lógica similar para el modal de edición
         }
