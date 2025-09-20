@@ -34,12 +34,12 @@ Tecnologías Utilizadas
 Instalación y Configuración
 
 1. Clonar el repositorio:
-git clone https://github.com/TuUsuario/LineasUnidas.git
+git clone https://github.com/Gaby0-0/LineasUnidas.git
 
 2.Configurar la base de datos MySQL local y crear un esquema llamado lineas_unidas.
 
 3.Configurar el archivo application.properties con las credenciales de MySQL, las siguientes propiedades:
-spring.datasource.url=jdbc:mysql://localhost:3306/lineas_unidas
+spring.datasource.url=jdbc:mysql://localhost:3306/lineas_unidas?useSSL=false&serverTimezone=UTC
 spring.datasource.username=root
 spring.datasource.password=contraseña_propia
 spring.jpa.hibernate.ddl-auto=update
