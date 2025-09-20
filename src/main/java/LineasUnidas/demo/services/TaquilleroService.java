@@ -60,8 +60,4 @@ public class TaquilleroService {
         return taquilleroRepo.findByCorreo(correo);
     }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }

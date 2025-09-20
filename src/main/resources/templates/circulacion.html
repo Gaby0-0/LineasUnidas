@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Viajes en Circulación</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            min-height: 100vh;
+            background: #f7f7f7 url('/urvan.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+
+
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px 40px;
+            flex: 1;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .contenedor {
+            display: flex;
+            gap: 30px;
+        }
+
+        .viajes {
+            flex: 1;
+        }
+
+        .viajes button {
+            display: block;
+            width: 100%;
+            background: #ff6600;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .viajes button:hover {
+            background: #e65c00;
+            transform: translateX(5px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .viajes button::after {
+            content: "➜";
+            position: absolute;
+            right: 15px;
+            font-size: 18px;
+        }
+
+        .detalles {
+            flex: 2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table thead th {
+            background-color: #808080;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        .btn-iniciar {
+            background: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+
+        .btn-iniciar:hover {
+            background: #ff7f33;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+
+        .btn-iniciar:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: white;
+            color: #333;
+            text-align: center;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <img src="/encabezado.png" alt="Lineas Unidas">
+        <nav>
+            <a href="/inicio">Inicio</a>
+            <a href="/boleto">Comprar Boleto</a>
+            <a href="/nosotros">Acerca de Nosotros</a>
+            <a href="/contacto">Contacto</a>
+            <a href="/login" class="btn-iniciar">Iniciar</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Viajes en Circulación</h2>
+        <div class="contenedor">
+            <div class="viajes">
+                <button onclick="mostrarDetalles('Miahuatlán', '045', '4 asientos', 'En Espera')">Miahuatlán de Porfirio
+                    Díaz</button>
+                <button
+                    onclick="mostrarDetalles('San José del Pacífico', '050', 'Sin disponibilidad', 'Salió de Matriz')">San
+                    José del Pacífico</button>
+                <button onclick="mostrarDetalles('Candelaria Loxicha', '070', '8 asientos', 'En Ruta')">Candelaria
+                    Loxicha</button>
+                <button onclick="mostrarDetalles('Zipolite', '080', '2 asientos', 'En Espera')">Zipolite</button>
+                <button onclick="mostrarDetalles('Puerto Ángel', '090', 'Sin disponibilidad', 'En Ruta')">Puerto
+                    Ángel</button>
+                <button onclick="mostrarDetalles('San Pedro Pochutla', '100', '5 asientos', 'Salió de Matriz')">San
+                    Pedro Pochutla</button>
+            </div>
+            <div class="detalles">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Unidad</th>
+                            <th>Disponibilidad</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="infoTabla">
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function mostrarDetalles(viaje, unidad, disponibilidad, estado) {
+            document.getElementById("infoTabla").innerHTML = `
+                <tr>
+                    <td>${unidad}</td>
+                    <td>${disponibilidad}</td>
+                    <td>${estado}</td>
+                </tr>
+            `;
+        }
+    </script>
+</body>
+<footer>
+    <p>© 2025 Lineas Unidas Serpevass </p>
+</footer>
+
+
+</html>
