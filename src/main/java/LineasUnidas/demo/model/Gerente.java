@@ -5,14 +5,9 @@
 package LineasUnidas.demo.model;
 
 import jakarta.persistence.Column;
-
-/**
- *
- * @author magal
- */
-
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,14 +16,26 @@ public class Gerente extends Usuario {
 
     @Column(name = "contrasenia", nullable = false)
     private String contrasenia;
-    
+    @ManyToOne
+    @JoinColumn(name = "id_horario", nullable = false)
+    private HorarioTrabajo horario;
     public Gerente() {}
-    public Gerente( String nombre, String apellidoP, String apellidoM, String telefono, String correo) {
+
+    public Gerente( String nombre, String apellidoP, String apellidoM, String telefono, String correo, HorarioTrabajo horarioTrabajo, String contrasenia) {
         super( nombre, apellidoP, apellidoM, telefono, correo, "Gerente");
-       
+        this.contrasenia =  contrasenia;
+        this.horario= horarioTrabajo;
     }
 
-  
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
 
     @Override
     public void registrar() {
@@ -55,4 +62,12 @@ public class Gerente extends Usuario {
     public String deshabilitarUrvan(int idUrván) {
         return "Urván " + idUrván + " deshabilitada.";
     }
+
+    public HorarioTrabajo getHorario() {
+    return horario;
+}
+
+public void setHorario(HorarioTrabajo horario) {
+    this.horario = horario;
+}
 }

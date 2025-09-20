@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"></html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -301,14 +301,14 @@
 
         
         <ul class="nav-links">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/administrar-viajes">Administrar Viajes</a></li>
-            <li><a href="/horarios">Horarios</a></li>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/inicio-gerente">Administrar Viajes</a></li>
             <li><a href="/empleados" class="active">Empleados</a></li>
+             <li><a href="/login" class="active">Login</a></li>
         </ul>
 
         <div class="user-profile">
-            <span>ID | EN</span>
+            <span>Admin</span>
             <div class="profile-pic"></div>
         </div>
     </nav>
@@ -328,55 +328,108 @@
                 <span id="alert-message"></span>
             </div>
             
-            <form th:action="@{/empleados}" th:object="${empleado}" method="post" id="employeeForm">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" th:field="*{nombre}" placeholder="Ingresa el nombre" required>
-                </div>
+        <form th:action="@{/empleados}" th:object="${empleadoo}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="apellidoP">Apellido Paterno</label>
-                    <input type="text" id="apellidoP" th:field="*{apellidoP}" placeholder="Ingresa el apellido paterno" required>
-                </div>
+            <div class="form-group">
+                <label for="apellidoP">Apellido Paterno</label>
+                <input type="text" id="apellidoP" name="apellidoP" placeholder="Ingresa el apellido paterno" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="apellidoM">Apellido Materno</label>
-                    <input type="text" id="apellidoM" th:field="*{apellidoM}" placeholder="Ingresa el apellido materno" required>
-                </div>
+            <div class="form-group">
+                <label for="apellidoM">Apellido Materno</label>
+                <input type="text" id="apellidoM" name="apellidoM" placeholder="Ingresa el apellido materno" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" th:field="*{telefono}" placeholder="Ingresa un número de teléfono válido" required>
-                </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ingresa un número de teléfono válido" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="correo">Correo</label>
-                    <input type="email" id="correo" th:field="*{correo}" placeholder="Ingresa un correo válido" required>
-                </div>
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" placeholder="Ingresa un correo válido" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="rol">Rol</label>
-                    <select id="rol" th:field="*{rol}" required>
-                        <option value="">Selecciona un rol</option>
-                        <option value="conductor">Conductor</option>
-                        <option value="taquillero">Taquillero</option>
-                        <option value="checador">Checador</option>
-                        <option value="gerente">Gerente</option>
-                    </select>
-                </div>
+            <!--Horarios -->
+            <div class="form-group">
+                <label for="horaEntrada">Hora de Entrada</label>
+                <input type="time" id="horaEntrada" name="horaEntrada" required>
+            </div>
 
-                <div class="form-group" id="permisoGroup" style="display: none;">
-                    <label for="permiso">Permiso de Conducir</label>
-                    <input type="text" id="permiso" th:field="*{permiso}" placeholder="Número de permiso">
-                </div>
+            <div class="form-group">
+                <label for="horaSalida">Hora de Salida</label>
+                <input type="time" id="horaSalida" name="horaSalida" required>
+            </div>
 
-                <div class="form-group" id="contraseniaGroup" style="display: none;">
-                    <label for="contrasenia">Contraseña</label>
-                    <input type="password" id="contrasenia" th:field="*{contrasenia}" placeholder="Contraseña">
+            <!--Días laborales -->
+            <div class="form-group">
+                <label style="font-size: 14px;">Días Laborales</label>
+                <div style="display: flex; gap: 5px; flex-wrap: wrap; font-size: 13px;">
+                    <label style="margin-right: 5px;"><input type="checkbox" name="dias" value="Lunes"> Lun</label>
+                    <label style="margin-right: 5px;"><input type="checkbox" name="dias" value="Martes"> Mar</label>
+                    <label style="margin-right: 5px;"><input type="checkbox" name="dias" value="Miércoles"> Mié</label>
+                    <label style="margin-right: 5px;"><input type="checkbox" name="dias" value="Jueves"> Jue</label>
+                    <label style="margin-right: 5px;"><input type="checkbox" name="dias" value="Viernes"> Vie</label>
+                    <label style="margin-right: 5px;"><input type="checkbox" name="dias" value="Sábado"> Sáb</label>
+                    <label style="margin-right: 5px;"><input type="checkbox" name="dias" value="Domingo"> Dom</label>
                 </div>
+            </div>
 
-                <button type="submit" class="btn-primary">Registrar</button>
-            </form>
+
+            <div class="form-group">
+                <label for="rol">Rol</label>
+                <select id="rol" name="rol" required>
+                    <option value="">Selecciona un rol</option>
+                    <option value="Conductor">Conductor</option>
+                    <option value="Taquillero">Taquillero</option>
+                    <option value="Checador">Checador</option>
+                    <option value="Gerente">Gerente</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="permisoGroup" style="display: none;">
+                <label for="permiso">Permiso de Conducir</label>
+                <input type="text" id="permiso" name="permiso" placeholder="Número de permiso">
+            </div>
+
+            <div class="form-group" id="contraseniaGroup" style="display: none;">
+                <label for="contrasenia">Contraseña</label>
+                <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña">
+            </div>
+
+            <button type="submit" class="btn-primary">Registrar</button>
+            
+        </form>
+    <div th:if="${mensaje}" class="alert alert-success">
+        <p th:text="${mensaje}"></p>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('rol').addEventListener('change', function() {
+        const rol = this.value;
+        const permisoGroup = document.getElementById('permisoGroup');
+        const contraseniaGroup = document.getElementById('contraseniaGroup');
+
+        if (rol === 'Conductor') {
+            permisoGroup.style.display = 'block';
+            contraseniaGroup.style.display = 'none';
+        } else if (rol === 'Gaquillero'| rol === 'Checador'| rol === 'Gerente'){
+             permisoGroup.style.display = 'none';
+            contraseniaGroup.style.display = 'block';
+        } else {
+            permisoGroup.style.display = 'none';
+            contraseniaGroup.style.display = 'none';
+        }
+    });
+});
+
+
+</script>
 
 
 
@@ -477,16 +530,16 @@
             const permisoGroup = document.getElementById('permisoGroup');
             const contraseniaGroup = document.getElementById('contraseniaGroup');
 
-            if (rol === 'conductor') {
-                permisoGroup.style.display = 'block';
-                contraseniaGroup.style.display = 'none';
-            } else if (rol === 'taquillero') {
-                permisoGroup.style.display = 'none';
-                contraseniaGroup.style.display = 'block';
-            } else {
-                permisoGroup.style.display = 'none';
-                contraseniaGroup.style.display = 'none';
-            }
+                if (rol === 'Conductor') {
+                    permisoGroup.style.display = 'block';
+                    contraseniaGroup.style.display = 'none';
+                } else if (rol === 'Taquillero'| rol === 'Checador'| rol === 'Gerente'){
+                    permisoGroup.style.display = 'none';
+                    contraseniaGroup.style.display = 'block';
+                } else {
+                    permisoGroup.style.display = 'none';
+                    contraseniaGroup.style.display = 'none';
+                }
         }
 
         function toggleEditRoleFields() {

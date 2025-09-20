@@ -5,12 +5,6 @@
 package LineasUnidas.demo.model;
 
 import jakarta.persistence.Column;
-
-/**
- *
- * @author magal
- */
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -31,10 +25,11 @@ public class Checador extends Usuario {
     public Checador() {}
 
     public Checador( String nombre, String apellidoP, String apellidoM,
-                    String telefono, String correo, HorarioTrabajo horario) {
+                    String telefono, String correo, HorarioTrabajo horario, String contrasenia) {
         super( nombre, apellidoP, apellidoM, telefono, correo, "Checador");
         
         this.horario = horario;
+        this.contrasenia = contrasenia;
     }
 
 
@@ -59,5 +54,13 @@ public class Checador extends Usuario {
 
     public void actualizarEstadoViaje(int idViaje, String disponibilidad, String estado) {
         System.out.println("Viaje " + idViaje + " actualizado con disponibilidad=" + disponibilidad + " y estado=" + estado);
+    }
+    
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 }

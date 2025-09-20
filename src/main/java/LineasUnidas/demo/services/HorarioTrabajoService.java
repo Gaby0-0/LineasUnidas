@@ -11,7 +11,6 @@ package LineasUnidas.demo.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import LineasUnidas.demo.model.HorarioTrabajo;
@@ -27,8 +26,7 @@ public class HorarioTrabajoService {
         this.horarioRepo = horarioRepo;
     }
 
-    public HorarioTrabajo crearHorario(List<String> dias, List<String> horas) {
-        HorarioTrabajo horario = new HorarioTrabajo(dias, horas);
+    public HorarioTrabajo crearHorario(HorarioTrabajo horario) {
         return horarioRepo.save(horario);
     }
 
