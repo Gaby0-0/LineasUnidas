@@ -15,6 +15,7 @@ import LineasUnidas.demo.services.ChecadorService;
 import LineasUnidas.demo.services.ClienteService;
 import LineasUnidas.demo.services.GerenteService;
 import LineasUnidas.demo.services.TaquilleroService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -42,7 +43,7 @@ public String loginCliente(
         @RequestParam("correo") String correo,
         @RequestParam("contrasena") String contrasena,
         Model model,
-        RedirectAttributes redirectAttrs) {
+        RedirectAttributes redirectAttrs,HttpSession session) {
 
     // Buscar el usuario por correo
     Cliente cliente = clienteService.obtenerClientePorCorreo(correo);
@@ -61,14 +62,20 @@ public String loginCliente(
 
 
         if (cliente != null) {
-             if (!cliente.getContrasenia().equals(contrasena)) {
-                model.addAttribute("error", "Usuario o contraseña incorrectos");
-                return "login";
-            }
-            model.addAttribute("cliente", cliente);
-            if ("Cliente".equalsIgnoreCase(cliente.getRol())) {
-                return "redirect:/usuario";
-            } 
+    if (!cliente.getContrasenia().equals(contrasena)) {
+        model.addAttribute("error", "Usuario o contraseña incorrectos");
+        return "login";
+    }
+
+    // Guardar el ID del cliente en sesión
+    session.setAttribute("clienteId", cliente.getIdUsuario());
+
+    model.addAttribute("cliente", cliente);
+    if ("Cliente".equalsIgnoreCase(cliente.getRol())) {
+        return "redirect:/usuario";
+    } 
+
+
            
         } else if (taquillero != null) {
             

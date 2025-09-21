@@ -47,6 +47,13 @@ public class Cliente extends Usuario {
         this.idCliente = idCliente;
     } */ 
 
+public int getIdUsuario() {
+    return idUsuario;
+}
+
+public void setIdUsuario(Integer idUsuario) {
+    this.idUsuario = idUsuario;
+}
     public String getMetodoCompra() {
         return metodoCompra;
     }

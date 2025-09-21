@@ -388,13 +388,15 @@
             LÍNEAS UNIDAS
         </div>
         <nav class="nav">
-            <a href=">Inicio</a>
-            <a href="#">Comprar Boleto</a>
+            <a href="/inicio">Inicio</a>
             <a href="#">Agencia de Reservas</a>
-            <a href="#">Contacto</a>
+            <a href="/contacto">Contacto</a>
         </nav>
         <div class="header-actions">
-            <button class="salir-btn">Salir</button>
+           <a href="/login">
+    <button class="salir-btn" type="button">Salir</button>
+</a>
+
             <div class="user-profile">U</div>
         </div>
     </div>
@@ -406,26 +408,35 @@
             
             <div class="personal-info">
                 <div class="info-title">Información Personal</div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Nombres</label>
-                        <input type="text" placeholder="Nombre apellidos">
+                    <form th:action="@{/usuario}" th:object="${cliente}" method="post">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input id="nombre" type="text" th:field="*{nombre}" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoP">Apellido Paterno</label>
+                                <input id="apellidoP" type="text" th:field="*{apellidoP}" placeholder="Apellido Paterno">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group">
+                                <label for="apellidoM">Apellido Materno</label>
+                                <input id="apellidoM" type="text" th:field="*{apellidoM}" placeholder="Apellido Materno">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input id="telefono" type="text" th:field="*{telefono}" placeholder="Teléfono">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="correo">Correo Electrónico</label>
+                                <input id="correo" type="email" th:field="*{correo}" placeholder="correo@ejemplo.com">
+                            </div>
+        
+
                     </div>
-                    <div class="form-group">
-                        <label>Correo Electrónico</label>
-                        <input type="email" placeholder="email@gmail.com">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Número de Teléfono</label>
-                        <input type="tel" placeholder="+52 999 000 00">
-                    </div>
-                    <div class="form-group">
-                        <label>Fecha de Nacimiento</label>
-                        <input type="date">
-                    </div>
-                </div>
                 <button class="edit-btn">Editar Información</button>
             </div>
         </div>
