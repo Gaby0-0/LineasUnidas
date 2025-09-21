@@ -10,6 +10,178 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        /* Formulario de reserva de boleto */
+form.th-boleto, .reservation-form form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #fff8f0;
+    border: 2px solid #ff8000;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* Labels */
+form.th-boleto label, .reservation-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+/* Inputs y select */
+form.th-boleto input, form.th-boleto select,
+.reservation-form input, .reservation-form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ff9900;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.reservas-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.reservas-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.reservas-table th {
+    background-color: #ff6b35;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+}
+
+.reservas-table td {
+    background-color: #fff8f0;
+    padding: 12px;
+    border-radius: 0 0 8px 8px;
+    color: #333;
+}
+
+.reservas-table tr:hover td {
+    background-color: #ffe0c6;
+    cursor: pointer;
+}
+
+/* Estado de reservas */
+.estado-reservado {
+    color: #28a745;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: #e6f4ea;
+}
+
+.estado-cancelado {
+    color: #dc3545;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: #f8d7da;
+}
+
+/* --- Footer siempre abajo --- */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.footer-column h4 {
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.footer-column p {
+    margin: 2px 0;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .footer-info {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Focus en inputs y select */
+form.th-boleto input:focus, form.th-boleto select:focus,
+.reservation-form input:focus, .reservation-form select:focus {
+    border-color: #ff5500;
+    box-shadow: 0 0 6px rgba(255, 102, 0, 0.5);
+    outline: none;
+}
+
+/* Botón */
+form.th-boleto button, .reservation-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff8000;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover en botón */
+form.th-boleto button:hover, .reservation-form button:hover {
+    background-color: #ff5500;
+    transform: scale(1.03);
+}
+
+/* Ajustes de select para flecha personalizada */
+form.th-boleto select, .reservation-form select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23999" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
+
         
         body {
             font-family: Arial, sans-serif;
@@ -379,6 +551,66 @@
             font-size: 12px;
             color: #999;
         }
+
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #fff8f0;
+    border: 2px solid #ff8000;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Labels */
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+/* Inputs y select */
+form input, form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ff9900;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Efecto focus en inputs y select */
+form input:focus, form select:focus {
+    border-color: #ff5500;
+    box-shadow: 0 0 6px rgba(255, 102, 0, 0.5);
+    outline: none;
+}
+
+/* Botón */
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff8000;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover botón */
+form button:hover {
+    background-color: #ff5500;
+    transform: scale(1.03);
+}
+
+    
+
     </style>
 </head>
 <body>
@@ -437,118 +669,157 @@
         
 
                     </div>
+                   
                 <button class="edit-btn">Editar Información</button>
+            </form>
             </div>
         </div>
+         
         
-        <!-- Sección de Reserva -->
-        <div class="reservation-section">
-            <div class="reservation-form">
-                <h2 class="section-title">Reservar Boleto</h2>
-                
-                <div class="checkbox-row">
-                    <input type="checkbox" id="terms">
-                    <label for="terms">Acepto los términos de condiciones</label>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Origen</label>
-                        <select>
-                            <option value="" disabled selected>Ingresa el origen del viaje</option>
-                            <option>Ciudad de Oaxaca</option>
-                            <option>Mathuatlán de Porfirio Díaz</option>
-                            <option>Salina Cruz</option>
-                            <option>Juchitán de Zaragoza</option>
-                            <option>Tehuantepec</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Destino</label>
-                        <select>
-                            <option value="" disabled selected>Ingresa el destino del viaje</option>
-                            <option>Ciudad de Oaxaca</option>
-                            <option>Mathuatlán de Porfirio Díaz</option>
-                            <option>Salina Cruz</option>
-                            <option>Juchitán de Zaragoza</option>
-                            <option>Tehuantepec</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Fecha</label>
-                        <input type="date">
-                    </div>
-                    <div class="form-group">
-                        <label>Horarios disponibles</label>
-                        <select>
-                            <option value="" disabled selected>Selecciona tu horario preferido</option>
-                            <option>8:00 AM - Matutino</option>
-                            <option>12:00 PM - Mediodía</option>
-                            <option>6:00 PM - Vespertino</option>
-                            <option>10:00 PM - Nocturno</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <button class="reserve-btn">Reservar</button>
+   <!-- ✅ Formulario de reserva CORRECTO -->
+<div class="reservation-section">
+    <div class="reservation-form">
+        <h2 class="section-title">Reservar Boleto</h2>
+
+        <!-- Mensajes de éxito/error -->
+        <div th:if="${mensajeExito}" class="mensaje-exito" th:text="${mensajeExito}"></div>
+        <div th:if="${mensajeError}" class="mensaje-error" th:text="${mensajeError}"></div>
+
+        <form th:action="@{/reservar}" method="post" class="th-boleto">
+            <!-- Selección de viaje -->
+            <div class="form-group">
+                <label for="viaje">Selecciona un viaje disponible:</label>
+                <select id="viaje" name="id_viaje" required>
+    <option value="">-- Seleccione un viaje --</option>
+    <option th:each="viaje : ${viajes}" 
+            th:value="${viaje.idViaje}" 
+            th:text="${(
+                        #lists.isEmpty(viaje.rutas) 
+                            ? 'Viaje ' + viaje.idViaje + ' (Sin ruta)' 
+                            : viaje.rutas[0].origen + ' → ' + viaje.rutas[0].destino
+                      ) + 
+                      ' | ' + 
+                      (viaje.horario != null 
+                            ? #temporals.format(viaje.horario.horaSalida, 'HH:mm') + ' - ' + 
+                              #temporals.format(viaje.horario.horaLlegada, 'HH:mm') 
+                            : 'Horario no disponible') + 
+                      ' | ' + 
+                      (viaje.horario != null 
+                            ? #temporals.format(viaje.horario.fecha, 'dd/MM/yyyy') 
+                            : 'Sin fecha') + 
+                      ' | $' + viaje.precio
+                    }">
+    </option>
+</select>
+
+
+
+            <!-- Tipo de boleto -->
+            <div class="form-group">
+                <label for="tipo">Tipo de boleto:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="Normal">Normal</option>
+                    <option value="VIP">VIP</option>
+                </select>
             </div>
+
+            <!-- ✅ Campo oculto CORREGIDO (idUsuario en lugar de id_usuario) -->
+            <input type="hidden" name="id_cliente" th:value="${cliente.idUsuario}">
+            <input type="hidden" name="estado" value="Reservado">
+
+            <button type="submit" class="reserve-btn">Reservar Boleto</button>
+        </form>
+    </div>
+    
+    <div class="bus-preview">
+        <h3 class="section-title">Viajes en Circulación</h3>
+        <div class="bus-image">🚌 Autobús</div>
+        <div class="circulation-badge">En Línea</div>
+        <button class="consult-btn">Consultar</button>
+    </div>
+</div>
+
+        <!-- Sección de Reservas Existentes -->
+        <div class="reservas-section">
+            <h2 class="section-title">Mis Reservas</h2>
             
-            <div class="bus-preview">
-                <h3 class="section-title">Viajes en Circulación</h3>
-                <div class="bus-image">🚌 Autobús</div>
-                <div class="circulation-badge">En Línea</div>
-                <button class="consult-btn">Consultar</button>
-            </div>
-        </div>
-        
-        <!-- Sección de Viajes Vigentes -->
-        <div class="trips-section">
-            <h2 class="section-title">Viajes Vigentes</h2>
+            <table class="reservas-table" th:if="${not #lists.isEmpty(boletos)}">
+                <thead>
+                    <tr>
+                        <th>ID Boleto</th>
+                        <th>Origen - Destino</th>
+                        <th>Fecha y Hora</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="boleto : ${boletos}">
+                        <td th:text="${boleto.idBoleto}">123</td>
+                        <td th:text="${boleto.viaje != null && not #lists.isEmpty(boleto.viaje.rutas) ? 
+                                     boleto.viaje.rutas[0].origen + ' → ' + boleto.viaje.rutas[0].destino : 
+                                     'Información no disponible'}">
+                            CD. Oaxaca → Zimatán
+                        </td>
+                        <td th:text="${boleto.viaje != null && boleto.viaje.horario != null ? 
+                                     #temporals.format(boleto.viaje.horario.fecha, 'dd/MM/yyyy') + ' ' + 
+                                     #temporals.format(boleto.viaje.horario.horaSalida, 'HH:mm') : 
+                                     'No disponible'}">
+                            20/08/2025 18:00
+                        </td>
+                        <td th:text="${boleto.tipo}">Normal</td>
+                        <td th:text="${boleto.viaje != null ? '$' + boleto.viaje.precio : 'N/A'}">$800.00</td>
+                        <td>
+                            <span th:class="${boleto.estado == 'Reservado' ? 'estado-reservado' : 'estado-cancelado'}" 
+                                  th:text="${boleto.estado}">
+                                Reservado
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             
-            <div class="trip-card">
-                <div class="trip-header">Detalles</div>
-                <table class="trip-details-table">
-                    <thead>
-                        <tr>
-                            <th>Id Viaje</th>
-                            <th>Origen</th>
-                            <th>Destino</th>
-                            <th>Asientos</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr onclick="selectRow(this)">
-                            <td>0012</td>
-                            <td>CD. Oaxaca</td>
-                            <td>Zimatán</td>
-                            <td>10</td>
-                            <td>$ 800.00<br><small>Viaje Sencillo</small></td>
-                        </tr>
-                        <tr onclick="selectRow(this)">
-                            <td>0013</td>
-                            <td>Mathuatlán de Porfirio Díaz</td>
-                            <td>CD. de Oaxaca</td>
-                            <td>15</td>
-                            <td>$ 750.00<br><small>Viaje Sencillo</small></td>
-                        </tr>
-                        <tr onclick="selectRow(this)">
-                            <td>0014</td>
-                            <td>CD. Oaxaca</td>
-                            <td>Salina Cruz</td>
-                            <td>8</td>
-                            <td>$ 1,200.00<br><small>Viaje Sencillo</small></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="cancel-btn" onclick="cancelTrip()">Cancelar</button>
+            <div th:if="${#lists.isEmpty(boletos)}" class="mensaje-info">
+                <p>No tienes reservas activas.</p>
             </div>
         </div>
         
-        <!-- Sección de Viajes Anteriores -->
+        
+    
+    <script>
+        function selectRow(row) {
+            // Remover selección anterior
+            const previousSelected = document.querySelector('.trip-details-table tbody tr.selected');
+            if (previousSelected) {
+                previousSelected.classList.remove('selected');
+            }
+            
+            // Agregar selección a la fila clickeada
+            row.classList.add('selected');
+        }
+        
+        function cancelTrip() {
+            const selectedRow = document.querySelector('.trip-details-table tbody tr.selected');
+            if (selectedRow) {
+                if (confirm('¿Estás seguro de que quieres cancelar este viaje?')) {
+                    selectedRow.style.opacity = '0.5';
+                    selectedRow.style.textDecoration = 'line-through';
+                    alert('Viaje cancelado exitosamente');
+                }
+            } else {
+                alert('Por favor, selecciona un viaje para cancelar');
+            }
+        }
+         // Script para recargar la página después de una reserva exitosa
+        if (window.location.search.includes('reserva=exito')) {
+            setTimeout(function() {
+                window.location.href = '/usuario'; // Recarga sin parámetros
+            }, 3000);
+        }
+    </script>
+    </div>
+    <!-- Sección de Viajes Anteriores -->
         <div class="previous-trips-section">
             <h2 class="section-title">Viajes Anteriores</h2>
             
@@ -580,7 +851,7 @@
                 </tbody>
             </table>
         </div>
-        
+    
         <!-- Footer con información de contacto -->
         <div class="footer-info">
             <div class="footer-column">
@@ -603,32 +874,6 @@
         <div class="copyright">
             <p>📅 2025 Líneas Unidas Serpenvas</p>
         </div>
-    </div>
     
-    <script>
-        function selectRow(row) {
-            // Remover selección anterior
-            const previousSelected = document.querySelector('.trip-details-table tbody tr.selected');
-            if (previousSelected) {
-                previousSelected.classList.remove('selected');
-            }
-            
-            // Agregar selección a la fila clickeada
-            row.classList.add('selected');
-        }
-        
-        function cancelTrip() {
-            const selectedRow = document.querySelector('.trip-details-table tbody tr.selected');
-            if (selectedRow) {
-                if (confirm('¿Estás seguro de que quieres cancelar este viaje?')) {
-                    selectedRow.style.opacity = '0.5';
-                    selectedRow.style.textDecoration = 'line-through';
-                    alert('Viaje cancelado exitosamente');
-                }
-            } else {
-                alert('Por favor, selecciona un viaje para cancelar');
-            }
-        }
-    </script>
 </body>
 </html>

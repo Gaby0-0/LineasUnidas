@@ -4,9 +4,20 @@
  */
 package LineasUnidas.demo.model;
 
-import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 /**
  *
  * @author gabri
@@ -24,6 +35,7 @@ public class Boleto {
 
     private String estado;
     private String tipo;
+    private BigDecimal precio;
 
     @ManyToOne
     @JoinColumn(name = "id_viaje", nullable = false)
@@ -41,62 +53,50 @@ public class Boleto {
     )
     private Set<Taquillero> taquilleros = new HashSet<>();
 
-
     public Boleto() {}
 
-    public Boleto(String estado, String tipo, Viaje viaje, Cliente cliente) {
+    public Boleto(String estado, String tipo, BigDecimal precio, Viaje viaje, Cliente cliente) {
         this.estado = estado;
         this.tipo = tipo;
+        this.precio = precio;
         this.viaje = viaje;
         this.cliente = cliente;
     }
 
-    public int getIdBoleto() {
-        return idBoleto;
-    }
+    // Getters y setters
+    public int getIdBoleto() { return idBoleto; }
+    public void setIdBoleto(int idBoleto) { this.idBoleto = idBoleto; }
 
-    public String getEstado() {
-        return estado;
-    }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public String getTipo() {
-        return tipo;
-    }
+    public BigDecimal getPrecio() { return precio; }
+    public void setPrecio(BigDecimal precio) { this.precio = precio; }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    public Viaje getViaje() { return viaje; }
+    public void setViaje(Viaje viaje) { this.viaje = viaje; }
 
-    public Viaje getViaje() {
-        return viaje;
-    }
+    public Cliente getCliente() { return cliente; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
 
-    public void setViaje(Viaje viaje) {
-        this.viaje = viaje;
-    }
+    public Set<Taquillero> getTaquilleros() { return taquilleros; }
+    public void setTaquilleros(Set<Taquillero> taquilleros) { this.taquilleros = taquilleros; }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Set<Taquillero> getTaquilleros() {
-        return taquilleros;
-    }
-
-    public void setTaquilleros(Set<Taquillero> taquilleros) {
-        this.taquilleros = taquilleros;
-    }
-
-    // ======== Método adicional ========
+    // Método adicional
     public String generarCodigo() {
+        if (viaje == null || tipo == null) return null;
         return "BOL-" + viaje.getIdViaje() + "-" + tipo.toUpperCase();
+    }
+
+    public int getIdViaje() {
+        return viaje != null ? viaje.getIdViaje() : 0;
+    }
+
+    public void setIdViaje(int idViaje) {
+        if (viaje == null) viaje = new Viaje();
+        viaje.setIdViaje(idViaje);
     }
 }

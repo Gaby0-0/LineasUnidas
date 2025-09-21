@@ -3,6 +3,7 @@ package LineasUnidas.demo.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import LineasUnidas.demo.model.Viaje;
@@ -53,6 +54,22 @@ public class ViajeService {
             return true;
         }
         return false;
+    }
+     @Autowired
+    private ViajeRepository viajeRepository;
+    
+    public List<Viaje> findAllWithRutasAndHorario() {
+        return viajeRepository.findAllWithRutasAndHorario();
+    }
+    
+    public Viaje findById(Integer idViaje) {
+        return viajeRepository.findById(idViaje)
+                .orElseThrow(() -> new RuntimeException("Viaje no encontrado con ID: " + idViaje));
+    }
+    
+    public Viaje findByIdWithRelations(Integer idViaje) {
+        return viajeRepository.findByIdWithRelations(idViaje)
+                .orElseThrow(() -> new RuntimeException("Viaje no encontrado con ID: " + idViaje));
     }
 }
 
